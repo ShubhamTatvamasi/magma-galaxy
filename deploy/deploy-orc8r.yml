@@ -1,3 +1,4 @@
 - hosts: localhost
+
   roles:
-  - role: shubhamtatvamasi.magma.install-docker
+  - role: shubhamtatvamasi.magma.install_docker
