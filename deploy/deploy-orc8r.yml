@@ -1,4 +1,6 @@
-- hosts: localhost
+- name: Install Magma Orchestrator
+  hosts: all
+  become: yes
 
   roles:
   - role: shubhamtatvamasi.magma.install_docker
