@@ -1,0 +1,27 @@
+- name: Download rke binary for linux
+  become: yes
+  get_url:
+    url: https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64
+    dest: /usr/local/bin/rke
+    mode: '0655'
+
+- name: Copy rke config file to {{ ansible_user }} machine
+  template:
+    src: cluster.yml.j2
+    dest: /home/{{ ansible_user }}/{{ magma_directory }}/rke/cluster.yml
+
+- name: Install Rancher Kubernetes Engine
+  command: rke up --config /home/{{ ansible_user }}/{{ magma_directory }}/rke/cluster.yml
+
+- name: Copy kubernetes config file to {{ ansible_user }} home
+  copy:
+    src: /home/{{ ansible_user }}/{{ magma_directory }}/rke/kube_config_cluster.yml
+    dest: /home/{{ ansible_user }}/.kube/config
+    remote_src: yes
+
+- name: Download kubectl binary for linux
+  become: yes
+  get_url:
+    url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: '0655'

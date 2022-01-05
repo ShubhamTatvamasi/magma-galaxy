@@ -7,6 +7,7 @@ ansible-galaxy collection install shubhamtatvamasi.magma --upgrade
 
 Copy your public SSH key to the host:
 ```bash
+ssh-keygen -R 192.168.5.70
 ssh-copy-id ubuntu@192.168.5.70
 ```
 

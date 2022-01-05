@@ -1,0 +1,14 @@
+- name: Creates SSH directory
+  file:
+    path: /home/{{ ansible_user }}/{{ magma_directory }}/.ssh
+    state: directory
+
+- name:  rke directory
+  file:
+    path: /home/{{ ansible_user }}/{{ magma_directory }}/rke
+    state: directory
+
+- name: Creates kubernetes config directory
+  file:
+    path: /home/{{ ansible_user }}/.kube
+    state: directory
