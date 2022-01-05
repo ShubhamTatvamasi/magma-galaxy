@@ -1,6 +1,6 @@
 galaxy_info:
   author: Shubham Tatvamasi
-  description: Install docker for Rancher
+  description: Install docker for Rancher Kubernetes Engine
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
