@@ -1,0 +1,19 @@
+- name: Add Stable Helm repository
+  kubernetes.core.helm_repository:
+    name: stable
+    repo_url: https://charts.helm.sh/stable/
+
+- name: Add Bitnami Helm repository
+  kubernetes.core.helm_repository:
+    name: bitnami
+    repo_url: https://charts.bitnami.com/bitnami
+
+- name: Add Elastic Search Helm repository
+  kubernetes.core.helm_repository:
+    name: elastic
+    repo_url: https://helm.elastic.co
+
+- name: Add Magma Helm repository
+  kubernetes.core.helm_repository:
+    name: orc8r
+    repo_url: https://artifactory.magmacore.org/artifactory/helm/

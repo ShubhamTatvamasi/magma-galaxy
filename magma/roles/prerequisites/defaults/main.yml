@@ -1,0 +1,4 @@
+rke_version: "1.3.4"
+helm_version: "3.7.2"
+kubectl_version: "1.23.1"
+magma_directory: "magma-galaxy"

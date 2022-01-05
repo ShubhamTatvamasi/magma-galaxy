@@ -1,8 +1,8 @@
 # Deploy Magma Orchestrator
 
-Install Magma Collection
+Install Dependant Collections
 ```bash
-ansible-galaxy collection install shubhamtatvamasi.magma --upgrade
+ansible-galaxy collection install -Ur requirements.yml
 ```
 
 Copy your public SSH key to the host:

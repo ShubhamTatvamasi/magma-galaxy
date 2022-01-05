@@ -2,9 +2,10 @@
   hosts: all
 
   roles:
-  # - role: shubhamtatvamasi.magma.install_docker
+  # - role: shubhamtatvamasi.magma.docker
 
 
-
-  - role: ../magma/roles/install_docker
-  - role: ../magma/roles/install_kubernetes
+  # - role: ../magma/roles/prerequisites
+  # - role: ../magma/roles/docker
+  # - role: ../magma/roles/kubernetes
+  - role: ../magma/roles/postgresql
