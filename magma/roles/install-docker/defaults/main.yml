@@ -1,0 +1,2 @@
+docker_version: 20.10
+ansible_user: ubuntu
