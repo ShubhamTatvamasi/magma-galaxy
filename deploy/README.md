@@ -16,3 +16,12 @@ Deploy Magma orchestrator:
 ```bash
 ansible-playbook deploy-orc8r.yml
 ```
+
+
+### Ubuntu 20.04 LTS Setup
+
+Setup Ansible:
+```bash
+sudo apt install -y ansible
+ansible-galaxy collection install shubhamtatvamasi.magma --force-with-deps
+```
