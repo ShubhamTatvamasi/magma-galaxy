@@ -115,16 +115,29 @@
           certs:
             enabled: true
             files:
-              rootCA.pem: "{{ rootCA_pem.stdout }}"
-              rootCA.key: "{{ rootCA_key.stdout }}"
-              controller.crt: "{{ controller_crt.stdout }}"
-              controller.key: "{{ controller_key.stdout }}"
-              admin_operator.pem: "{{ admin_operator_pem.stdout }}"
-              admin_operator.key.pem: "{{ admin_operator_key_pem.stdout }}"
-              fluentd.pem: "{{ fluentd_pem.stdout }}"
-              fluentd.key: "{{ fluentd_key.stdout }}"
-              bootstrapper.key: "{{ bootstrapper_key.stdout }}"
-              certifier.key: "{{ certifier_key.stdout }}"
-              certifier.pem: "{{ certifier_pem.stdout }}"
-              nms_nginx.key.pem: "{{ nms_nginx_key_pem.stdout }}"
-              nms_nginx.pem: "{{ nms_nginx_pem.stdout }}"
+              rootCA.pem: |
+                {{ rootCA_pem.stdout }}
+              rootCA.key: |
+                {{ rootCA_key.stdout }}
+              controller.crt: |
+                {{ controller_crt.stdout }}
+              controller.key: |
+                {{ controller_key.stdout }}
+              admin_operator.pem: |
+                {{ admin_operator_pem.stdout }}
+              admin_operator.key.pem: |
+                {{ admin_operator_key_pem.stdout }}
+              fluentd.pem: |
+                {{ fluentd_pem.stdout }}
+              fluentd.key: |
+                {{ fluentd_key.stdout }}
+              bootstrapper.key: |
+                {{ bootstrapper_key.stdout }}
+              certifier.key: |
+                {{ certifier_key.stdout }}
+              certifier.pem: |
+                {{ certifier_pem.stdout }}
+              nms_nginx.key.pem: |
+                {{ nms_nginx_key_pem.stdout }}
+              nms_nginx.pem: |
+                {{ nms_nginx_pem.stdout }}
