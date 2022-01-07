@@ -18,6 +18,11 @@
     name: openebs
     repo_url: hhttps://openebs.github.io/charts
 
+- name: Add MetalLB Helm repository
+  kubernetes.core.helm_repository:
+    name: metallb
+    repo_url: https://metallb.github.io/metallb
+
 - name: Add Magma Helm repository
   kubernetes.core.helm_repository:
     name: orc8r
