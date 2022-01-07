@@ -15,3 +15,10 @@
 
 - name: Set {{ magma_namespace }} as default namespace
   command: kubectl config set-context --current --namespace {{ magma_namespace }}
+
+- name: Remove ingress-nginx namespace
+  kubernetes.core.k8s:
+    name: ingress-nginx
+    api_version: v1
+    kind: Namespace
+    state: absent

@@ -3,6 +3,7 @@
     name: elasticsearch
     chart_ref: elastic/elasticsearch
     release_namespace: "{{ magma_namespace }}"
+    chart_version: "{{ elasticsearch_chart_version }}"
     create_namespace: true
     values:
       replicas: 1
