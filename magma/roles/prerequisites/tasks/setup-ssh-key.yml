@@ -12,4 +12,4 @@
   authorized_key:
     user: "{{ ansible_user }}"
     state: present
-    key: "{{rke_ssh_key.stdout}}"
+    key: "{{ rke_ssh_key.stdout }}"
