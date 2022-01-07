@@ -8,4 +8,5 @@
   # - role: ../magma/roles/prerequisites
   # - role: ../magma/roles/docker
   # - role: ../magma/roles/kubernetes
-  - role: ../magma/roles/postgresql
+  - role: ../magma/roles/openebs
+  # - role: ../magma/roles/postgresql
