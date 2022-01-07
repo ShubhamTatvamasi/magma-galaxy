@@ -16,14 +16,14 @@
 - name: Add OpenEBS Helm repository
   kubernetes.core.helm_repository:
     name: openebs
-    repo_url: hhttps://openebs.github.io/charts
+    repo_url: https://openebs.github.io/charts
 
 - name: Add MetalLB Helm repository
   kubernetes.core.helm_repository:
     name: metallb
     repo_url: https://metallb.github.io/metallb
 
-- name: Add Magma Helm repository
+- name: Add Magma Orchestrator Helm repository
   kubernetes.core.helm_repository:
     name: orc8r
     repo_url: https://artifactory.magmacore.org/artifactory/helm/

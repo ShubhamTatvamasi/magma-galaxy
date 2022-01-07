@@ -1,0 +1,17 @@
+- include_tasks: generate-certs.yml
+- include_tasks: register-secrets.yml
+- include_tasks: volume-claims.yml
+- include_tasks: orc8r.yml
+- include_tasks: lte-orc8r.yml
+- include_tasks: feg-orc8r.yml
+- include_tasks: cwf-orc8r.yml
+- include_tasks: wifi-orc8r.yml
+- include_tasks: fbinternal-orc8r.yml
+
+# - debug:
+#     msg:
+#       - "*.nms.{{ orc8r_domain }}"
+#       - "fluentd.{{ orc8r_domain }}"
+#       - "api.{{ orc8r_domain }}"
+#       - "controller.{{ orc8r_domain }}"
+#       - "bootstrapper-controller.{{ orc8r_domain }}"

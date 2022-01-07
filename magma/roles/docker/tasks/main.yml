@@ -1,4 +1,4 @@
-- name: Install docker for Rancher Kubernetes Engine
+- name: Install Docker
   become: yes
   shell: |
     curl https://releases.rancher.com/install-docker/{{ docker_version }}.sh | sh
