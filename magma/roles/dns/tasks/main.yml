@@ -8,5 +8,6 @@
   command: /home/{{ ansible_user }}/{{ magma_directory }}/generate-dns.sh
   register: magma_dns
 
-- debug:
+- name: Update these DNS Values
+  debug:
     msg: "{{ magma_dns.stdout.split('\n') }}"
