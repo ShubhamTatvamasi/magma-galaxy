@@ -10,5 +10,6 @@
   # - role: ../magma/roles/kubernetes
   # - role: ../magma/roles/openebs
   # - role: ../magma/roles/metallb
-  - role: ../magma/roles/elasticsearch
+  # - role: ../magma/roles/elasticsearch
+  - role: ../magma/roles/fluentd
   # - role: ../magma/roles/postgresql

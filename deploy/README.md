@@ -17,7 +17,6 @@ Deploy Magma orchestrator:
 ansible-playbook deploy-orc8r.yml
 ```
 
-
 ### Ubuntu 20.04 LTS Setup
 
 Setup Ansible:
