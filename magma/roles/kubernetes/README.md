@@ -1,2 +1,2 @@
-Install Rancher Kubernetes Engine
+Rancher Kubernetes Engine
 =========

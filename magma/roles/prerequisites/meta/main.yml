@@ -1,6 +1,6 @@
 galaxy_info:
   author: Shubham Tatvamasi
-  description: Install prerequisites for Magma
+  description: Prerequisites for Magma
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value

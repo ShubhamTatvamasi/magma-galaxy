@@ -1,2 +1,2 @@
-Install postgresql
+postgresql
 =========

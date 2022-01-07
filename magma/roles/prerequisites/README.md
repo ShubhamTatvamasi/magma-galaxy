@@ -1,2 +1,2 @@
-Install prerequisites for Magma
+Prerequisites for Magma
 =========
