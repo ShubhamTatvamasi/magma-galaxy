@@ -7,7 +7,7 @@ ansible-galaxy collection init shubhamtatvamasi.magma
 
 Initiating a new role: 
 ```bash
-ansible-galaxy role init install-docker
+ansible-galaxy role init docker
 ```
 
 Tag and push for triggering the build:
