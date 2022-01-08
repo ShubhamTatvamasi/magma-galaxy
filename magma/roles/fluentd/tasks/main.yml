@@ -62,6 +62,7 @@
             reconnect_on_error true
             reload_on_failure true
             reload_connections false
+            log_es_400_reason true
             <buffer>
               @type file
               path /var/log/fluentd-buffers/kubernetes.system.buffer
