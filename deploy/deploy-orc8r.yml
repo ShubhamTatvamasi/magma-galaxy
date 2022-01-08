@@ -9,8 +9,8 @@
   # - role: shubhamtatvamasi.magma.openebs
   # - role: shubhamtatvamasi.magma.metallb
   # - role: shubhamtatvamasi.magma.postgresql
-  # - role: shubhamtatvamasi.magma.elasticsearch
   # - role: shubhamtatvamasi.magma.orc8r
+  # - role: shubhamtatvamasi.magma.elasticsearch
   # - role: shubhamtatvamasi.magma.fluentd
   # - role: shubhamtatvamasi.magma.dns
 
@@ -21,7 +21,7 @@
   - role: ../magma/roles/openebs
   - role: ../magma/roles/metallb
   - role: ../magma/roles/postgresql
-  - role: ../magma/roles/elasticsearch
   - role: ../magma/roles/orc8r
+  - role: ../magma/roles/elasticsearch
   - role: ../magma/roles/fluentd
   - role: ../magma/roles/dns

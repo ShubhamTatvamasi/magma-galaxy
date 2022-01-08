@@ -24,7 +24,7 @@ Deploy Magma orchestrator:
 ansible-playbook deploy-orc8r.yml
 ```
 
-Genetrate new user:
+Create new user:
 ```bash
 ORC_POD=$(kubectl get pod -l app.kubernetes.io/component=orchestrator -o jsonpath='{.items[0].metadata.name}')
 kubectl exec -it ${ORC_POD} -- envdir /var/opt/magma/envdir /var/opt/magma/bin/accessc \
