@@ -10,4 +10,8 @@
         - name: default
           protocol: layer2
           addresses:
-          - "{{ ip_pool }}"
+          - "{{ ip_1 }}/32"
+          - "{{ ip_2 }}/32"
+          - "{{ ip_3 }}/32"
+          - "{{ ip_4 }}/32"
+          - "{{ ip_5 }}/32"

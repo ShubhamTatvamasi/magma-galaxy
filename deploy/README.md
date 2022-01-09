@@ -23,6 +23,7 @@ Deploy Magma orchestrator:
 ```bash
 ansible-playbook deploy-orc8r.yml
 ```
+> Note: update your values in `hosts.yml` file before running the playbook.
 
 Create new user:
 ```bash
