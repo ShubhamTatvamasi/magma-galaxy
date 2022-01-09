@@ -42,6 +42,7 @@ kubectl exec -it ${NMS_POD} -- yarn setAdminPassword magma-test admin admin
 
 Setup Ansible:
 ```bash
+sudo apt-get remove --purge ansible
 sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
