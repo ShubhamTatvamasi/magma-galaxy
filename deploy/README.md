@@ -19,11 +19,13 @@ sudo vim /etc/netplan/50-cloud-init.yaml
 sudo netplan apply
 ```
 
+**Update your values in `hosts.yml` file before running the playbook.**
+
 Deploy Magma orchestrator:
 ```bash
 ansible-playbook deploy-orc8r.yml
 ```
-> Note: update your values in `hosts.yml` file before running the playbook.
+> Note: After deployment is done it takes around 10 minutes to start the magma services.
 
 Create new user:
 ```bash
