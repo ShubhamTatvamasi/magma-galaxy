@@ -25,7 +25,7 @@ Deploy Magma orchestrator:
 ```bash
 ansible-playbook deploy-orc8r.yml
 ```
-> Note: After deployment is done it takes around 10 minutes to start the magma services.
+> Note: After deployment is done it takes around 10 minutes to start all the magma services.
 
 Create new user:
 ```bash
