@@ -31,3 +31,6 @@
 - name: Move helm binary file to executable path
   become: yes
   command: mv /tmp/linux-amd64/helm /usr/local/bin/helm
+
+- name: Install Helm Diff Plugin
+  command: helm plugin install https://github.com/databus23/helm-diff

@@ -24,7 +24,7 @@
             pullPolicy: IfNotPresent
 
           service:
-            type: LoadBalancer
+            type: "{{ magma_service_type }}"
 
         secret:
           certs: orc8r-secrets-certs
@@ -41,7 +41,7 @@
           hostname: controller.{{ orc8r_domain }}
 
         service:
-          type: LoadBalancer
+          type: "{{ magma_service_type }}"
 
       controller:
 

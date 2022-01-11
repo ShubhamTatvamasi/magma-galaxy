@@ -1,13 +1,5 @@
-- name: Copy script to {{ ansible_user }} machine for generating Magma DNS values
-  template:
-    src: generate-dns.sh.j2
-    dest: /home/{{ ansible_user }}/{{ magma_directory }}/generate-dns.sh
-    mode: '0755'
+- include_tasks: generate-dns.yml
+  when: magma_service_type == "LoadBalancer"
 
-- name: Generate Magma DNS values
-  command: /home/{{ ansible_user }}/{{ magma_directory }}/generate-dns.sh
-  register: magma_dns
-
-- name: Update these DNS Values
-  debug:
-    msg: "{{ magma_dns.stdout.split('\n') }}"
+- include_tasks: haproxy.yml
+  when: magma_service_type == ""

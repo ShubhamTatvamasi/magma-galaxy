@@ -12,6 +12,7 @@
   # - role: shubhamtatvamasi.magma.orc8r
   # - role: shubhamtatvamasi.magma.elasticsearch
   # - role: shubhamtatvamasi.magma.fluentd
+  # - role: shubhamtatvamasi.magma.haproxy
   # - role: shubhamtatvamasi.magma.dns
 
   # For Development
@@ -24,4 +25,5 @@
   - role: ../magma/roles/orc8r
   - role: ../magma/roles/elasticsearch
   - role: ../magma/roles/fluentd
+  - role: ../magma/roles/haproxy
   - role: ../magma/roles/dns

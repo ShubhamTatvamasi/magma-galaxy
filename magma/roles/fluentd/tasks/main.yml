@@ -98,4 +98,4 @@
         - containerPort: 24224
           name: forward
           protocol: TCP
-        type: LoadBalancer
+        type: "{{ magma_service_type }}"
