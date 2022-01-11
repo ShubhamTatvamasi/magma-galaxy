@@ -1,4 +1,4 @@
-- name: Install postgresql
+- name: Install PostgreSQL
   kubernetes.core.helm:
     name: postgresql
     chart_ref: bitnami/postgresql
