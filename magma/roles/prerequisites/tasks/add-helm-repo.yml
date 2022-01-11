@@ -26,4 +26,4 @@
 - name: Add Magma Orchestrator Helm repository
   kubernetes.core.helm_repository:
     name: orc8r
-    repo_url: https://artifactory.magmacore.org/artifactory/helm/
+    repo_url: "{{ orc8r_helm_repo }}"

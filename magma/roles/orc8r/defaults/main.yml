@@ -4,3 +4,4 @@ magma_docker_registry: "magmacore"
 magma_docker_tag: "1.6.1"
 magma_api_password: "password"
 magma_directory: "magma-galaxy"
+deploy_wifi_orc8r: false

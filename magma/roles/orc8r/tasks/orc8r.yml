@@ -51,6 +51,9 @@
           repository: "{{ magma_docker_registry }}/controller"
           tag: "{{ magma_docker_tag }}"
 
+        podDisruptionBudget:
+          enabled: true
+
       metrics:
         prometheus:
           includeOrc8rAlerts: true
