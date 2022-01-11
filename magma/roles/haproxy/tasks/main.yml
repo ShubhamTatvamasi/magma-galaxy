@@ -26,7 +26,7 @@
           tcp-request inspect-delay 5s
           tcp-request content accept if tls
 
-          acl nms                     req.ssl_sni -m reg -i .+.nms.{{ orc8r_domain }}$
+          acl nms                     req.ssl_sni -m reg -i .+.nms.{{ orc8r_domain }}
           acl api                     req.ssl_sni -i api.{{ orc8r_domain }}
           acl fluentd                 req.ssl_sni -i fluentd.{{ orc8r_domain }}
           acl controller              req.ssl_sni -i controller.{{ orc8r_domain }}
