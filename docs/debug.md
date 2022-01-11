@@ -9,3 +9,9 @@ helm upgrade -i kibana elastic/kibana \
 
 http://192.168.5.58:5601
 
+Request for getting event and log counts:
+```bash
+curl http://elasticsearch-master:9200//_count; echo
+curl http://elasticsearch-master:9200/eventd%2A/_count; echo
+curl http://elasticsearch-master:9200/magma%2A/_count; echo
+```
