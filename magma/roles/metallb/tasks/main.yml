@@ -28,3 +28,12 @@
           protocol: layer2
           addresses:
           - "{{ metallb_ip }}/32"
+
+- name: Remove metallb-speaker DaemonSet
+  when: deploy_on_aws
+  kubernetes.core.k8s:
+    state: absent
+    api_version: v1
+    kind: DaemonSet
+    namespace: "{{ metallb_namespace }}"
+    name: metallb-speaker
