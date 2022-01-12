@@ -2,7 +2,7 @@
   kubernetes.core.helm:
     name: metallb
     chart_ref: metallb/metallb
-    release_namespace: "{{ magma_namespace }}"
+    release_namespace: "{{ metallb_namespace }}"
     create_namespace: true
     values:
       configInline: 
