@@ -1,1 +1,2 @@
 metallb_namespace: "metallb-system"
+deploy_on_aws: false
