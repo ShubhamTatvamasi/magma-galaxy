@@ -2,7 +2,7 @@
   kubernetes.core.helm:
     name: metallb
     chart_ref: metallb/metallb
-    release_namespace: metallb-system
+    release_namespace: "{{ magma_namespace }}"
     create_namespace: true
     values:
       configInline: 
@@ -11,8 +11,3 @@
           protocol: layer2
           addresses:
           - "{{ ansible_host }}/32"
-          # - "{{ ip_1 }}/32"
-          # - "{{ ip_2 }}/32"
-          # - "{{ ip_3 }}/32"
-          # - "{{ ip_4 }}/32"
-          # - "{{ ip_5 }}/32"

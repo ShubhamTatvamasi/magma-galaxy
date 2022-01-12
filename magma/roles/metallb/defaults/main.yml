@@ -1,5 +1,1 @@
-ip_1: ""
-ip_2: ""
-ip_3: ""
-ip_4: ""
-ip_5: ""
+metallb_namespace: "metallb-system"

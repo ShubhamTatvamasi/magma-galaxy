@@ -12,13 +12,6 @@ ssh-keygen -R 192.168.5.70
 ssh-copy-id ubuntu@192.168.5.70
 ```
 
-Add more IPs to the host:
-```bash
-ssh ubuntu@192.168.5.70
-sudo vim /etc/netplan/50-cloud-init.yaml
-sudo netplan apply
-```
-
 **Update your values in `hosts.yml` file before running the playbook.**
 
 Deploy Magma orchestrator:
