@@ -35,9 +35,11 @@ kubectl exec -it ${NMS_POD} -- yarn setAdminPassword magma-test admin admin
 
 Install Ansible - Ubuntu 20.04 LTS:
 ```bash
+sudo apt remove ansible
 sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible -y
-ansible-galaxy collection install shubhamtatvamasi.magma --force-with-deps
 ```
 
 Install Ansible - macOS:
