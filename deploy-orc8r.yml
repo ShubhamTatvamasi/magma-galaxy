@@ -1,30 +1,29 @@
 ---
 - name: Install Magma Orchestrator
   hosts: all
-
   roles:
-  # For Production
-  # - role: shubhamtatvamasi.magma.prerequisites
-  # - role: shubhamtatvamasi.magma.docker
-  # - role: shubhamtatvamasi.magma.kubernetes
-  # - role: shubhamtatvamasi.magma.openebs
-  # - role: shubhamtatvamasi.magma.metallb
-  # - role: shubhamtatvamasi.magma.postgresql
-  # - role: shubhamtatvamasi.magma.orc8r
-  # - role: shubhamtatvamasi.magma.haproxy
-  # - role: shubhamtatvamasi.magma.elasticsearch
-  # - role: shubhamtatvamasi.magma.fluentd
-  # - role: shubhamtatvamasi.magma.dns
+    # For Production
+    # - role: shubhamtatvamasi.magma.prerequisites
+    # - role: shubhamtatvamasi.magma.docker
+    # - role: shubhamtatvamasi.magma.kubernetes
+    # - role: shubhamtatvamasi.magma.openebs
+    # - role: shubhamtatvamasi.magma.metallb
+    # - role: shubhamtatvamasi.magma.postgresql
+    # - role: shubhamtatvamasi.magma.orc8r
+    # - role: shubhamtatvamasi.magma.haproxy
+    # - role: shubhamtatvamasi.magma.elasticsearch
+    # - role: shubhamtatvamasi.magma.fluentd
+    # - role: shubhamtatvamasi.magma.dns
 
-  # For Development
-  - role: prerequisites
-  - role: docker
-  - role: kubernetes
-  - role: openebs
-  - role: metallb
-  - role: postgresql
-  - role: orc8r
-  - role: haproxy
-  - role: elasticsearch
-  - role: fluentd
-  - role: dns
+    # For Development
+    - role: prerequisites
+    - role: docker
+    - role: kubernetes
+    - role: openebs
+    - role: metallb
+    - role: postgresql
+    - role: orc8r
+    - role: haproxy
+    - role: elasticsearch
+    - role: fluentd
+    - role: dns
