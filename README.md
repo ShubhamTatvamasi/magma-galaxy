@@ -3,7 +3,6 @@
 Install Dependant Collections
 ```bash
 ansible-galaxy collection install -U shubhamtatvamasi.magma
-ansible-galaxy collection list
 ```
 
 Copy your public SSH key to the host:
