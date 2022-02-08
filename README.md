@@ -1,6 +1,6 @@
 # Deploy Magma Orchestrator
 
-Install Dependant Collections
+Install dependant collections:
 ```bash
 ansible-galaxy collection install -U shubhamtatvamasi.magma
 ```
