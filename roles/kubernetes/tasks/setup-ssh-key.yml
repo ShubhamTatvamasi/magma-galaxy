@@ -1,4 +1,9 @@
 ---
+- name: Create SSH directory
+  file:
+    path: "{{ ansible_env.HOME }}/{{ magma_directory }}/.ssh"
+    state: directory
+
 - name: Generate an OpenSSH keypair
   openssh_keypair:
     path: "{{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa"
