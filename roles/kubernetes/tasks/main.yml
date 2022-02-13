@@ -2,15 +2,15 @@
 - name: Copy rke config file to {{ ansible_user }} machine
   template:
     src: cluster.yml.j2
-    dest: /home/{{ ansible_user }}/{{ magma_directory }}/rke/cluster.yml
+    dest: "{{ ansible_env.HOME }}/{{ magma_directory }}/rke/cluster.yml"
 
 - name: Install Rancher Kubernetes Engine
-  command: rke up --config /home/{{ ansible_user }}/{{ magma_directory }}/rke/cluster.yml
+  command: rke up --config {{ ansible_env.HOME }}/{{ magma_directory }}/rke/cluster.yml
 
 - name: Copy kubernetes config file to {{ ansible_user }} home
   copy:
-    src: /home/{{ ansible_user }}/{{ magma_directory }}/rke/kube_config_cluster.yml
-    dest: /home/{{ ansible_user }}/.kube/config
+    src: "{{ ansible_env.HOME }}/{{ magma_directory }}/rke/kube_config_cluster.yml"
+    dest: "{{ ansible_env.HOME }}/.kube/config"
     remote_src: yes
     mode: '0600'
 

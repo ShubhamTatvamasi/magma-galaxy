@@ -1,4 +1,10 @@
 ---
+- include_tasks: linux-binaries.yml
+  when: ( ansible_distribution != "MacOSX" )
+
+- include_tasks: macos-binaries.yml
+  when: ( ansible_distribution == "MacOSX" )
+
 - include_tasks: create-directories.yml
 - include_tasks: setup-ssh-key.yml
 - include_tasks: install-packages.yml
