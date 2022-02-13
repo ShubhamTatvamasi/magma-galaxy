@@ -1,9 +1,4 @@
 ---
-- include_tasks: linux-binaries.yml
-  when: ( ansible_distribution != "MacOSX" )
-
-- include_tasks: macos-binaries.yml
-  when: ( ansible_distribution == "MacOSX" )
-
+- include_tasks: install-binaries.yml
 - include_tasks: install-packages.yml
 - include_tasks: add-helm-repo.yml
