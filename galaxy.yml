@@ -7,7 +7,7 @@ namespace: shubhamtatvamasi
 # The name of the collection. Has the same character restrictions as 'namespace'
 name: magma
 # The version of the collection. Must be compatible with semantic versioning
-version: 0.1.50
+version: 0.1.51
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
@@ -34,6 +34,7 @@ tags:
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
 # range specifiers can be set and are separated by ','
 dependencies:
+  community.crypto: ">=2.2.1"
   community.docker: ">=2.1.1"
   kubernetes.core: ">=2.2.3"
 # The URL of the originating SCM repository
