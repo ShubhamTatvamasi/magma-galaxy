@@ -1,0 +1,4 @@
+---
+orc8r_domain: ""
+ingress_nginx_chart_version: "4.0.18"
+magma_namespace: "orc8r"
