@@ -11,9 +11,13 @@
   pip:
     name: docker
 
-- name: Install kubernetes python package
+- name: Install kubernetes and crypto python package
   pip:
-    name: kubernetes
+    name: "{{ item }}"
+  with_items:
+    - kubernetes
+    - cryptography
+    - pyopenssl
 
 - name: Install Helm Diff Plugin
   kubernetes.core.helm_plugin:
