@@ -107,10 +107,10 @@ addons: ""
 addons_include: []
 system_images:
   etcd: rancher/mirrored-coreos-etcd:v3.5.0
-  alpine: rancher/rke-tools:v0.1.78
-  nginx_proxy: rancher/rke-tools:v0.1.78
-  cert_downloader: rancher/rke-tools:v0.1.78
-  kubernetes_services_sidecar: rancher/rke-tools:v0.1.78
+  alpine: rancher/rke-tools:v0.1.80
+  nginx_proxy: rancher/rke-tools:v0.1.80
+  cert_downloader: rancher/rke-tools:v0.1.80
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.80
   kubedns: rancher/mirrored-k8s-dns-kube-dns:1.17.4
   dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.17.4
   kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.17.4
@@ -118,7 +118,7 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.8.6
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.21.1
-  kubernetes: rancher/hyperkube:v1.22.6-rancher1
+  kubernetes: rancher/hyperkube:v1.22.7-rancher1
   flannel: rancher/mirrored-coreos-flannel:v0.15.1
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher6
   calico_node: rancher/mirrored-calico-node:v3.21.1
@@ -129,16 +129,16 @@ system_images:
   canal_node: rancher/mirrored-calico-node:v3.21.1
   canal_cni: rancher/mirrored-calico-cni:v3.21.1
   canal_controllers: rancher/mirrored-calico-kube-controllers:v3.21.1
-  canal_flannel: rancher/mirrored-coreos-flannel:v0.15.1
+  canal_flannel: rancher/mirrored-flannelcni-flannel:v0.17.0
   canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.21.1
   weave_node: weaveworks/weave-kube:2.8.1
   weave_cni: weaveworks/weave-npc:2.8.1
-  pod_infra_container: rancher/mirrored-pause:3.5
+  pod_infra_container: rancher/mirrored-pause:3.6
   ingress: rancher/nginx-ingress-controller:nginx-1.1.0-rancher1
   ingress_backend: rancher/mirrored-nginx-ingress-controller-defaultbackend:1.5-rancher1
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.1.1
   metrics_server: rancher/mirrored-metrics-server:v0.5.1
-  windows_pod_infra_container: rancher/kubelet-pause:v0.1.6
+  windows_pod_infra_container: rancher/mirrored-pause:3.6
   aci_cni_deploy_container: noiro/cnideploy:5.1.1.0.1ae238a
   aci_host_container: noiro/aci-containers-host:5.1.1.0.1ae238a
   aci_opflex_container: noiro/opflex:5.1.1.0.1ae238a
