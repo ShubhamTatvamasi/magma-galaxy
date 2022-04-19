@@ -4,7 +4,7 @@
     path: "{{ ansible_env.HOME }}/{{ magma_directory }}/rke"
     state: directory
 
-- name: Copy rke config file to {{ ansible_user }} machine
+- name: Copy rke config file to host
   template:
     src: cluster.yml.j2
     dest: "{{ ansible_env.HOME }}/{{ magma_directory }}/rke/cluster.yml"
@@ -17,7 +17,7 @@
     path: "{{ ansible_env.HOME }}/.kube"
     state: directory
 
-- name: Copy kubernetes config file to {{ ansible_user }} home
+- name: Copy kubernetes config file to home
   copy:
     src: "{{ ansible_env.HOME }}/{{ magma_directory }}/rke/kube_config_cluster.yml"
     dest: "{{ ansible_env.HOME }}/.kube/config"
