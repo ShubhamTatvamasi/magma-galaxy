@@ -1,0 +1,5 @@
+---
+magma_namespace: "orc8r"
+nms_org: "magma-test"
+nms_id: "admin"
+nms_pass: "admin"

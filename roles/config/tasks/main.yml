@@ -1,0 +1,37 @@
+---
+- name: Register Orchestrator pod
+  kubernetes.core.k8s_info:
+    kind: Pod
+    namespace: "{{ magma_namespace }}"
+    label_selectors:
+      - "app.kubernetes.io/component = orchestrator"
+  register: orchestrator_pod
+
+- name: Set Orchestrator pod name
+  set_fact:
+    orchestrator_pod_name: "{{ orchestrator_pod.resources[0].metadata.name }}"
+
+- name: Setup admin operator certificate
+  kubernetes.core.k8s_exec:
+    namespace: "{{ magma_namespace }}"
+    pod: "{{ orchestrator_pod_name }}"
+    command: envdir /var/opt/magma/envdir /var/opt/magma/bin/accessc add-existing -admin -cert /var/opt/magma/certs/admin_operator.pem admin_operator
+  ignore_errors: True
+
+- name: Register magmalte pod
+  kubernetes.core.k8s_info:
+    kind: Pod
+    namespace: "{{ magma_namespace }}"
+    label_selectors:
+      - "app.kubernetes.io/component = magmalte"
+  register: magmalte_pod
+
+- name: Set magmalte pod name
+  set_fact:
+    magmalte_pod_name: "{{ magmalte_pod.resources[0].metadata.name }}"
+
+- name: Setup admin operator certificate
+  kubernetes.core.k8s_exec:
+    namespace: "{{ magma_namespace }}"
+    pod: "{{ magmalte_pod_name }}"
+    command: yarn setAdminPassword {{ nms_org }} {{ nms_id }} {{ nms_pass }}

@@ -1,0 +1,5 @@
+---
+- name: Configure Magma Orchestrator
+  hosts: all
+  roles:
+    - role: config
