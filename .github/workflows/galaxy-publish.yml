@@ -1,5 +1,5 @@
 ---
-name: Publish Magma Ansible Galaxy Collection
+name: Publish Ansible Galaxy Collection
 on:
   push:
     tags:
@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Package and Publish Magma Ansible Galaxy Collection
+      - name: Package and Publish Ansible Galaxy Collection
         run: |
           COLLECTION_NAMESPACE=$(yq e '.namespace' galaxy.yml)
           COLLECTION_NAME=$(yq e '.name' galaxy.yml)
