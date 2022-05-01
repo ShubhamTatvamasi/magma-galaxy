@@ -30,7 +30,7 @@
   set_fact:
     magmalte_pod_name: "{{ magmalte_pod.resources[0].metadata.name }}"
 
-- name: Setup admin operator certificate
+- name: Set username and password for {{ nms_org }} organization
   kubernetes.core.k8s_exec:
     namespace: "{{ magma_namespace }}"
     pod: "{{ magmalte_pod_name }}"
