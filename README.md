@@ -2,7 +2,7 @@
 
 Install dependant collections:
 ```bash
-ansible-galaxy collection install -U shubhamtatvamasi.magma
+ansible-galaxy collection install shubhamtatvamasi.magma
 ```
 
 Copy your public SSH key to the host:
