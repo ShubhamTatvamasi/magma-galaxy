@@ -1,0 +1,14 @@
+---
+- name: Remove Elasticsearch
+  kubernetes.core.helm:
+    name: elasticsearch
+    namespace: "{{ magma_namespace }}"
+    state: absent
+
+- name: Remove elasticsearch volume
+  kubernetes.core.k8s:
+    state: absent
+    name: elasticsearch-master-elasticsearch-master-0
+    namespace: "{{ magma_namespace }}"
+    kind: PersistentVolumeClaim
+    wait: yes

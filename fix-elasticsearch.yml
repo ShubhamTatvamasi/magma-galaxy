@@ -1,0 +1,6 @@
+---
+- name: Fix Elasticsearch
+  hosts: all
+  roles:
+    - role: remove_elasticsearch
+    - role: elasticsearch
