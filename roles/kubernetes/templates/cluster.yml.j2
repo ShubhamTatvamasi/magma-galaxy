@@ -9,7 +9,7 @@ nodes:
       - worker
       - etcd
     hostname_override: ""
-    user: ubuntu
+    user: {{ ansible_user }}
     docker_socket: /var/run/docker.sock
     ssh_key: ""
     ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
