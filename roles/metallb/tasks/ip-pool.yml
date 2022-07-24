@@ -1,0 +1,16 @@
+---
+- name: Create IP Address Pool
+  register: result
+  until: result is not failed
+  retries: 10
+  delay: 10
+  kubernetes.core.k8s:
+    namespace: metallb-system
+    definition:
+      apiVersion: metallb.io/v1beta1
+      kind: IPAddressPool
+      metadata:
+        name: ip-pool
+      spec:
+        addresses:
+        - "{{ metallb_ip }}/32"

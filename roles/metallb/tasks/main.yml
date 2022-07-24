@@ -17,3 +17,6 @@
 - name: Delete metallb-speaker DaemonSet
   when: deploy_on_aws
   include_tasks: metallb-speaker.yml
+
+- name: Create IP Address Pool
+  include_tasks: ip-pool.yml

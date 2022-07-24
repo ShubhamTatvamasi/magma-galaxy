@@ -1,29 +1,31 @@
 # If you intended to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
 nodes:
-  - address: {{ ansible_host }}
-    port: "22"
-    internal_address: ""
-    role:
-      - controlplane
-      - worker
-      - etcd
-    hostname_override: ""
-    user: {{ ansible_user }}
-    docker_socket: /var/run/docker.sock
-    ssh_key: ""
-    ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
-    ssh_cert: ""
-    ssh_cert_path: ""
-    labels: {}
-    taints: []
+- address: {{ ansible_host }}
+  port: "22"
+  internal_address: ""
+  role:
+  - controlplane
+  - worker
+  - etcd
+  hostname_override: ""
+  user: {{ ansible_user }}
+  docker_socket: /var/run/docker.sock
+  ssh_key: ""
+  ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
+  ssh_cert: ""
+  ssh_cert_path: ""
+  labels: {}
+  taints: []
 services:
   etcd:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
     external_urls: []
@@ -40,9 +42,11 @@ services:
   kube-api:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
     service_cluster_ip_range: 10.43.0.0/16
@@ -56,9 +60,11 @@ services:
   kube-controller:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
     cluster_cidr: 10.42.0.0/16
@@ -66,17 +72,21 @@ services:
   scheduler:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
   kubelet:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: ['/var/openebs/local:/var/openebs/local']
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
     cluster_domain: cluster.local
@@ -87,9 +97,11 @@ services:
   kubeproxy:
     image: ""
     extra_args: {}
+    extra_args_array: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
+    win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
 network:
@@ -106,38 +118,38 @@ authentication:
 addons: ""
 addons_include: []
 system_images:
-  etcd: rancher/mirrored-coreos-etcd:v3.5.0
+  etcd: rancher/mirrored-coreos-etcd:v3.5.3
   alpine: rancher/rke-tools:v0.1.80
   nginx_proxy: rancher/rke-tools:v0.1.80
   cert_downloader: rancher/rke-tools:v0.1.80
   kubernetes_services_sidecar: rancher/rke-tools:v0.1.80
-  kubedns: rancher/mirrored-k8s-dns-kube-dns:1.17.4
-  dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.17.4
-  kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.17.4
-  kubedns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.3
-  coredns: rancher/mirrored-coredns-coredns:1.8.6
+  kubedns: rancher/mirrored-k8s-dns-kube-dns:1.21.1
+  dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.21.1
+  kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.21.1
+  kubedns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
+  coredns: rancher/mirrored-coredns-coredns:1.9.0
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.21.1
-  kubernetes: rancher/hyperkube:v1.22.7-rancher1
+  kubernetes: rancher/hyperkube:v1.23.7-rancher1
   flannel: rancher/mirrored-coreos-flannel:v0.15.1
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher6
-  calico_node: rancher/mirrored-calico-node:v3.21.1
-  calico_cni: rancher/mirrored-calico-cni:v3.21.1
-  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.21.1
-  calico_ctl: rancher/mirrored-calico-ctl:v3.21.1
-  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.21.1
-  canal_node: rancher/mirrored-calico-node:v3.21.1
-  canal_cni: rancher/mirrored-calico-cni:v3.21.1
-  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.21.1
+  calico_node: rancher/mirrored-calico-node:v3.22.0
+  calico_cni: rancher/mirrored-calico-cni:v3.22.0
+  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.22.0
+  calico_ctl: rancher/mirrored-calico-ctl:v3.22.0
+  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.22.0
+  canal_node: rancher/mirrored-calico-node:v3.22.0
+  canal_cni: rancher/mirrored-calico-cni:v3.22.0
+  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.22.0
   canal_flannel: rancher/mirrored-flannelcni-flannel:v0.17.0
-  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.21.1
+  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.22.0
   weave_node: weaveworks/weave-kube:2.8.1
   weave_cni: weaveworks/weave-npc:2.8.1
   pod_infra_container: rancher/mirrored-pause:3.6
-  ingress: rancher/nginx-ingress-controller:nginx-1.1.0-rancher1
+  ingress: rancher/nginx-ingress-controller:nginx-1.2.1-rancher1
   ingress_backend: rancher/mirrored-nginx-ingress-controller-defaultbackend:1.5-rancher1
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.1.1
-  metrics_server: rancher/mirrored-metrics-server:v0.5.1
+  metrics_server: rancher/mirrored-metrics-server:v0.6.1
   windows_pod_infra_container: rancher/mirrored-pause:3.6
   aci_cni_deploy_container: noiro/cnideploy:5.1.1.0.1ae238a
   aci_host_container: noiro/aci-containers-host:5.1.1.0.1ae238a

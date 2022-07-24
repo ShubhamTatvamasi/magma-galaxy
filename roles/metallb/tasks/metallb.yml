@@ -6,10 +6,3 @@
     release_namespace: metallb-system
     chart_version: "{{ metallb_chart_version }}"
     create_namespace: true
-    values:
-      configInline:
-        address-pools:
-          - name: default
-            protocol: layer2
-            addresses:
-              - "{{ metallb_ip }}/32"
