@@ -2,7 +2,7 @@
 - name: Create IP Address Pool
   register: result
   until: result is not failed
-  retries: 20
+  retries: 50
   delay: 10
   kubernetes.core.k8s:
     namespace: metallb-system
