@@ -5,3 +5,53 @@
     chart_ref: orc8r/domain-proxy
     release_namespace: "{{ magma_namespace }}"
     create_namespace: true
+    values:
+      dp:
+        configuration_controller:
+          image:
+            repository: "{{ magma_docker_registry }}/configuration-controller"
+            tag: "{{ magma_docker_tag }}"
+          database:
+            driver: "{{ orc8r_db_driver }}"
+            db: "{{ orc8r_db_name }}"
+            host: "{{ orc8r_db_host }}"
+            port: "{{ orc8r_db_port }}"
+            user: "{{ orc8r_db_user }}"
+            pass: "{{ orc8r_db_pass }}"
+        radio_controller:
+          image:
+            repository: "{{ magma_docker_registry }}/radio-controller"
+            tag: "{{ magma_docker_tag }}"
+          database:
+            driver: "{{ orc8r_db_driver }}"
+            db: "{{ orc8r_db_name }}"
+            host: "{{ orc8r_db_host }}"
+            port: "{{ orc8r_db_port }}"
+            user: "{{ orc8r_db_user }}"
+            pass: "{{ orc8r_db_pass }}"
+        active_mode_controller:
+          image:
+            repository: "{{ magma_docker_registry }}/active-mode-controller"
+            tag: "{{ magma_docker_tag }}"
+          database:
+            driver: "{{ orc8r_db_driver }}"
+            db: "{{ orc8r_db_name }}"
+            host: "{{ orc8r_db_host }}"
+            port: "{{ orc8r_db_port }}"
+            user: "{{ orc8r_db_user }}"
+            pass: "{{ orc8r_db_pass }}"
+        db_service:
+          image:
+            repository: "{{ magma_docker_registry }}/db-service"
+            tag: "{{ magma_docker_tag }}"
+          database:
+            driver: "{{ orc8r_db_driver }}"
+            db: "{{ orc8r_db_name }}"
+            host: "{{ orc8r_db_host }}"
+            port: "{{ orc8r_db_port }}"
+            user: "{{ orc8r_db_user }}"
+            pass: "{{ orc8r_db_pass }}"
+        fluentd:
+          secret:
+            certs:
+              enabled: true

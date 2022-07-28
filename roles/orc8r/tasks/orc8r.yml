@@ -4,7 +4,6 @@
     name: orc8r
     chart_ref: orc8r/orc8r
     release_namespace: "{{ magma_namespace }}"
-    chart_version: "{{ orc8r_chart_version }}"
     create_namespace: true
     values:
       nms:
@@ -15,9 +14,9 @@
             pullPolicy: IfNotPresent
           env:
             api_host: orc8r-nginx-proxy
-            mysql_host: postgresql
-            mysql_user: postgres
-            mysql_pass: postgres
+            mysql_host: "{{ orc8r_db_host }}"
+            mysql_user: "{{ orc8r_db_user }}"
+            mysql_pass: "{{ orc8r_db_pass }}"
         nginx:
           image:
             pullPolicy: IfNotPresent

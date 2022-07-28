@@ -1,11 +1,16 @@
 ---
 orc8r_domain: ""
-orc8r_chart_version: ""
 magma_namespace: "orc8r"
 magma_docker_registry: "magmacore"
 magma_docker_tag: "1.6.1"
 magma_directory: "magma-galaxy"
 magma_service_type: "ClusterIP"
+orc8r_db_driver: "postgres"
+orc8r_db_name: "magma"
+orc8r_db_host: "postgresql"
+orc8r_db_port: "5432"
+orc8r_db_user: "postgres"
+orc8r_db_pass: "postgres"
 deploy_wifi_orc8r: false
 deploy_domain_proxy: false
 deploy_fbinternal_orc8r: false
