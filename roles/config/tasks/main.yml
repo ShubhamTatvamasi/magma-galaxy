@@ -12,11 +12,11 @@
     orchestrator_pod_name: "{{ orchestrator_pod.resources[0].metadata.name }}"
 
 - name: Setup admin operator certificate
+  ignore_errors: yes
   kubernetes.core.k8s_exec:
     namespace: "{{ magma_namespace }}"
     pod: "{{ orchestrator_pod_name }}"
     command: envdir /var/opt/magma/envdir /var/opt/magma/bin/accessc add-existing -admin -cert /var/opt/magma/certs/admin_operator.pem admin_operator
-  ignore_errors: True
 
 - name: Register magmalte pod
   kubernetes.core.k8s_info:

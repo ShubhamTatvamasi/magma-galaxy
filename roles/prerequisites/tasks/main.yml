@@ -1,4 +1,4 @@
 ---
-- include_tasks: install-binaries.yml
-- include_tasks: install-packages.yml
-- include_tasks: add-helm-repo.yml
+- import_tasks: install-binaries.yml
+- import_tasks: install-packages.yml
+- import_tasks: add-helm-repo.yml
