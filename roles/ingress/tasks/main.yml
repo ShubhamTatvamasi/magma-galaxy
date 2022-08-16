@@ -26,32 +26,7 @@
                       number: 443
   with_items:
     - { name: "nms", host: "*.nms", service: "nginx-proxy" }
+    - { name: "fluentd", host: "fluentd", service: "fluentd" }
     - { name: "api", host: "api", service: "orc8r-nginx-proxy" }
     - { name: "controller", host: "controller", service: "orc8r-clientcert-nginx" }
     - { name: "bootstrapper", host: "bootstrapper-controller", service: "bootstrapper-orc8r-nginx" }
-
-- name: Create Orchestrator Ingress rule for fluentd
-  kubernetes.core.k8s:
-    namespace: "{{ magma_namespace }}"
-    definition:
-      apiVersion: networking.k8s.io/v1
-      kind: Ingress
-      metadata:
-        name: fluentd
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      spec:
-        rules:
-          - host: "fluentd.{{ orc8r_domain }}"
-            http:
-              paths:
-              - path: /
-                pathType: Prefix
-                backend:
-                  service:
-                    name: fluentd
-                    port:
-                      number: 24224

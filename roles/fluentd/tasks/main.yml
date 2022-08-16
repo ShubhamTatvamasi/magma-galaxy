@@ -11,7 +11,7 @@
         forward-input.conf: |-
           <source>
             @type forward
-            port 24224
+            port 443
             bind 0.0.0.0
             <transport tls>
               ca_path /certs/certifier.pem
@@ -97,7 +97,7 @@
       replicaCount: 1
       service:
         ports:
-          - containerPort: 24224
+          - containerPort: 443
             name: forward
             protocol: TCP
         type: "{{ magma_service_type }}"

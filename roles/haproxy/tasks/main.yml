@@ -47,7 +47,7 @@
 
         backend fluentd
           mode tcp
-          server svc fluentd:24224
+          server svc fluentd:443
 
         backend nginx-proxy
           mode tcp
