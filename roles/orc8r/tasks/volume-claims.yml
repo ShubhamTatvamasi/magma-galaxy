@@ -14,7 +14,6 @@
           requests:
             storage: "{{ item.storage }}"
   with_items:
-    - { name: "openvpn", storage: "2M" }
     - { name: "promcfg", storage: "1Gi" }
     - { name: "promdata", storage: "20Gi" }
     - { name: "grafanadata", storage: "2Gi" }
