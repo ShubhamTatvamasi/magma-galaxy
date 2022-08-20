@@ -7,6 +7,10 @@ Deploy Magma Orchestrator to a single node.
 bash -c "$(curl -sL https://github.com/ShubhamTatvamasi/magma-galaxy/raw/master/deploy-orc8r.sh)"
 ```
 
+Switch to magma user after deployment has finsished.
+```bash
+sudo su - magma
+```
 ---
 
 Install dependant collections:
