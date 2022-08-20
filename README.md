@@ -2,12 +2,12 @@
 
 ### Quick Install
 
-Deploy Magma Orchestrator to a single node.
+Deploy Magma Orchestrator to a single node as `root` user.
 ```bash
 bash -c "$(curl -sL https://github.com/ShubhamTatvamasi/magma-galaxy/raw/master/deploy-orc8r.sh)"
 ```
 
-Switch to magma user after deployment has finsished.
+Switch to `magma` user after deployment has finsished.
 ```bash
 sudo su - magma
 ```
