@@ -73,7 +73,8 @@ cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
 if [ "${ORC8R_VERSION}" == "latest" ]; then
-  for var in magma_docker_registry magma_docker_tag orc8r_helm_repo
+  export ansible_variables="magma_docker_registry magma_docker_tag orc8r_helm_repo"
+  for var in ${ansible_variables}
   do
     sed "s/# ${var}/${var}/g" -i ${HOSTS_FILE}
   done
