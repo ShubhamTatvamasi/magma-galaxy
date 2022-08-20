@@ -31,6 +31,19 @@ HOSTS_FILE="hosts.yml"
 read -p "Your Magma Orchestrator domain name? [${DEFAULT_ORC8R_DOMAIN}]: " ORC8R_DOMAIN
 ORC8R_DOMAIN="${ORC8R_DOMAIN:-${DEFAULT_ORC8R_DOMAIN}}"
 
+# Do you wish to install latest Orc8r build?
+read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
+LATEST_ORC8R="${LATEST_ORC8R:-N}"
+
+case ${LATEST_ORC8R} in
+  [yY][eE][sS]|[yY])
+    ORC8R_VERSION="latest"
+    ;;
+  [nN][oO]|[nN])
+    ORC8R_VERSION="stable"
+    ;;
+esac
+
 # Add repos for installing ansible and yq
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 add-apt-repository --yes ppa:rmescandon/yq
@@ -67,6 +80,14 @@ export ORC8R_DOMAIN=${ORC8R_DOMAIN}
 yq e '.all.hosts = env(ORC8R_IP)' -i ${HOSTS_FILE}
 yq e '.all.vars.ansible_user = env(MAGMA_USER)' -i ${HOSTS_FILE}
 yq e '.all.vars.orc8r_domain = env(ORC8R_DOMAIN)' -i ${HOSTS_FILE}
+
+# Depoly latest Orc8r build
+if [ "${ORC8R_VERSION}" == "latest" ]; then
+  for var in magma_docker_registry magma_docker_tag orc8r_helm_repo
+  do
+    sed "s/# ${var}/${var}/g" -i ${HOSTS_FILE}
+  done
+fi
 
 # Deploy Magma Orchestrator
 ansible-playbook deploy-orc8r.yml
