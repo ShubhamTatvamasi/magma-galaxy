@@ -1,5 +1,14 @@
 # Deploy Magma Orchestrator
 
+### Quick Install
+
+Deploy Magma Orchestrator to a single node.
+```bash
+bash -c "$(curl -sL https://github.com/ShubhamTatvamasi/magma-galaxy/raw/master/deploy-orc8r.sh)"
+```
+
+---
+
 Install dependant collections:
 ```bash
 ansible-galaxy collection install shubhamtatvamasi.magma
