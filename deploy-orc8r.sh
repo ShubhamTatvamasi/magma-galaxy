@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 # Check if the system is Linux
 if [ "$(uname)" != "Linux" ]; then
