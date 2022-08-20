@@ -13,6 +13,8 @@ sudo su - magma
 ```
 ---
 
+### Manual Install
+
 Install dependant collections:
 ```bash
 ansible-galaxy collection install shubhamtatvamasi.magma
