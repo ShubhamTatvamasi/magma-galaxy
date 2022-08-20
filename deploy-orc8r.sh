@@ -71,6 +71,14 @@ ansible-galaxy collection install shubhamtatvamasi.magma
 git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 
+# Depoly latest Orc8r build
+if [ "${ORC8R_VERSION}" == "latest" ]; then
+  for var in magma_docker_registry magma_docker_tag orc8r_helm_repo
+  do
+    sed "s/# ${var}/${var}/g" -i ${HOSTS_FILE}
+  done
+fi
+
 # export variables for yq
 export ORC8R_IP=${ORC8R_IP}
 export MAGMA_USER=${MAGMA_USER}
@@ -80,14 +88,6 @@ export ORC8R_DOMAIN=${ORC8R_DOMAIN}
 yq e '.all.hosts = env(ORC8R_IP)' -i ${HOSTS_FILE}
 yq e '.all.vars.ansible_user = env(MAGMA_USER)' -i ${HOSTS_FILE}
 yq e '.all.vars.orc8r_domain = env(ORC8R_DOMAIN)' -i ${HOSTS_FILE}
-
-# Depoly latest Orc8r build
-if [ "${ORC8R_VERSION}" == "latest" ]; then
-  for var in magma_docker_registry magma_docker_tag orc8r_helm_repo
-  do
-    sed "s/# ${var}/${var}/g" -i ${HOSTS_FILE}
-  done
-fi
 
 # Deploy Magma Orchestrator
 ansible-playbook deploy-orc8r.yml
