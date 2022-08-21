@@ -64,9 +64,6 @@ su - ${MAGMA_USER} -c bash <<_
 ssh-keygen -t rsa -f /home/${MAGMA_USER}/.ssh/id_rsa -N ''
 cp /home/${MAGMA_USER}/.ssh/id_rsa.pub /home/${MAGMA_USER}/.ssh/authorized_keys 
 
-# Download dependent collection
-ansible-galaxy collection install shubhamtatvamasi.magma
-
 # Clone Magma Galaxy repo
 git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
