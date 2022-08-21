@@ -1,6 +1,7 @@
 ---
 name: Publish Ansible Galaxy Collection
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
