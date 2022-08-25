@@ -70,9 +70,9 @@ cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
 if [ "${ORC8R_VERSION}" == "latest" ]; then
-  sed "s/# magma_docker_registry/magma_docker_registry/g" -i ${HOSTS_FILE}
-  sed "s/# magma_docker_tag/magma_docker_tag/g" -i ${HOSTS_FILE}
-  sed "s/# orc8r_helm_repo/orc8r_helm_repo/g" -i ${HOSTS_FILE}
+  sed "s/# magma_docker_registry/magma_docker_registry/" -i ${HOSTS_FILE}
+  sed "s/# magma_docker_tag/magma_docker_tag/" -i ${HOSTS_FILE}
+  sed "s/# orc8r_helm_repo/orc8r_helm_repo/" -i ${HOSTS_FILE}
 fi
 
 # export variables for yq
