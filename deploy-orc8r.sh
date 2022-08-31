@@ -49,40 +49,7 @@ add-apt-repository --yes ppa:rmescandon/yq
 add-apt-repository --yes ppa:ansible/ansible
 
 # Install yq and ansible
-apt update
 apt install ansible yq -y
 
 # Create magma user and give sudo permissions
-useradd -m ${MAGMA_USER} -s /bin/bash -p $(echo ${MAGMA_USER} | openssl passwd -1 -stdin) -G sudo
-echo "${MAGMA_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# switch to magma user
-su - ${MAGMA_USER} -c bash <<_
-
-# Genereta SSH key for magma user
-ssh-keygen -t rsa -f /home/${MAGMA_USER}/.ssh/id_rsa -N ''
-cp /home/${MAGMA_USER}/.ssh/id_rsa.pub /home/${MAGMA_USER}/.ssh/authorized_keys 
-
-# Clone Magma Galaxy repo
-git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
-cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
-
-# Depoly latest Orc8r build
-if [ "${ORC8R_VERSION}" == "latest" ]; then
-  sed "s/# magma_docker/magma_docker/g" -i ${HOSTS_FILE}
-  sed "s/# orc8r_helm_repo/orc8r_helm_repo/" -i ${HOSTS_FILE}
-fi
-
-# export variables for yq
-export ORC8R_IP=${ORC8R_IP}
-export MAGMA_USER=${MAGMA_USER}
-export ORC8R_DOMAIN=${ORC8R_DOMAIN}
-
-# Updated values to the config file
-yq e '.all.hosts = env(ORC8R_IP)' -i ${HOSTS_FILE}
-yq e '.all.vars.ansible_user = env(MAGMA_USER)' -i ${HOSTS_FILE}
-yq e '.all.vars.orc8r_domain = env(ORC8R_DOMAIN)' -i ${HOSTS_FILE}
-
-# Deploy Magma Orchestrator
-ansible-playbook deploy-orc8r.yml
-_
+useradd -m ${MAGMA_USER} -s /bin/bash -p $(echo ${MAGMA_USER} | openssl passwd -1 -st
