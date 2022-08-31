@@ -79,7 +79,7 @@ export ORC8R_IP=${ORC8R_IP}
 export MAGMA_USER=${MAGMA_USER}
 export ORC8R_DOMAIN=${ORC8R_DOMAIN}
 
-# Updated values to the config file
+# Update values to the config file
 yq e '.all.hosts = env(ORC8R_IP)' -i ${HOSTS_FILE}
 yq e '.all.vars.ansible_user = env(MAGMA_USER)' -i ${HOSTS_FILE}
 yq e '.all.vars.orc8r_domain = env(ORC8R_DOMAIN)' -i ${HOSTS_FILE}
