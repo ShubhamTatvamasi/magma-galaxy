@@ -44,11 +44,11 @@ case ${LATEST_ORC8R} in
     ;;
 esac
 
-# Add repos for installing ansible and yq
+# Add repos for installing yq and ansible
 add-apt-repository --yes ppa:rmescandon/yq
 add-apt-repository --yes ppa:ansible/ansible
 
-# Install ansible and yq
+# Install yq and ansible
 apt update
 apt install ansible yq -y
 
