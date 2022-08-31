@@ -45,7 +45,6 @@ case ${LATEST_ORC8R} in
 esac
 
 # Add repos for installing ansible and yq
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 add-apt-repository --yes ppa:rmescandon/yq
 add-apt-repository --yes ppa:ansible/ansible
 
