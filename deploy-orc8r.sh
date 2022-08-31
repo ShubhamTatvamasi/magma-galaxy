@@ -49,7 +49,6 @@ add-apt-repository --yes ppa:rmescandon/yq
 add-apt-repository --yes ppa:ansible/ansible
 
 # Install yq and ansible
-apt update
 apt install ansible yq -y
 
 # Create magma user and give sudo permissions
@@ -64,7 +63,9 @@ ssh-keygen -t rsa -f /home/${MAGMA_USER}/.ssh/id_rsa -N ''
 cp /home/${MAGMA_USER}/.ssh/id_rsa.pub /home/${MAGMA_USER}/.ssh/authorized_keys 
 
 # Clone Magma Galaxy repo
-git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
+git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} \
+  /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO} \
+  --depth 1
 cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
