@@ -63,9 +63,7 @@ ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
 cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys 
 
 # Clone Magma Galaxy repo
-git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} \
-  ~/${MAGMA_ORC8R_REPO} \
-  --depth 1
+git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} ~/${MAGMA_ORC8R_REPO} --depth 1
 cd ~/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
