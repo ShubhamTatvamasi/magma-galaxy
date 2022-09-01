@@ -3,7 +3,7 @@
 set -e
 
 # Check if the system is Linux
-if [ "$(uname)" != "Linux" ]; then
+if [ $(uname) != "Linux" ]; then
   echo "This script is only for Linux"
   exit 1
 fi
@@ -59,14 +59,14 @@ echo "${MAGMA_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 su - ${MAGMA_USER} -c bash <<_
 
 # Genereta SSH key for magma user
-ssh-keygen -t rsa -f /home/${MAGMA_USER}/.ssh/id_rsa -N ''
-cp /home/${MAGMA_USER}/.ssh/id_rsa.pub /home/${MAGMA_USER}/.ssh/authorized_keys 
+ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
+cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys 
 
 # Clone Magma Galaxy repo
 git clone https://github.com/${GITHUB_USERNAME}/${MAGMA_ORC8R_REPO} \
-  /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO} \
+  ~/${MAGMA_ORC8R_REPO} \
   --depth 1
-cd /home/${MAGMA_USER}/${MAGMA_ORC8R_REPO}
+cd ~/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
 if [ "${ORC8R_VERSION}" == "latest" ]; then
