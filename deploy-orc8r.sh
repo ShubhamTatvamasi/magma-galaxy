@@ -36,10 +36,10 @@ read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
 LATEST_ORC8R="${LATEST_ORC8R:-N}"
 
 case ${LATEST_ORC8R} in
-  [yY][eE][sS]|[yY])
+  [yY]*)
     ORC8R_VERSION="latest"
     ;;
-  [nN][oO]|[nN])
+  [nN]*)
     ORC8R_VERSION="stable"
     ;;
 esac
