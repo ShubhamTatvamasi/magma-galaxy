@@ -16,6 +16,8 @@ curl http://elasticsearch-master:9200/eventd%2A/_count; echo
 curl http://elasticsearch-master:9200/magma%2A/_count; echo
 ```
 
+### Storage cleanup
+
 Keep deleting prometheus-cache pod if you have limited storage:
 ```bash
 kubectl delete pod -l app.kubernetes.io/component=prometheus-cache
