@@ -32,7 +32,7 @@ read -p "Your Magma Orchestrator domain name? [${DEFAULT_ORC8R_DOMAIN}]: " ORC8R
 ORC8R_DOMAIN="${ORC8R_DOMAIN:-${DEFAULT_ORC8R_DOMAIN}}"
 
 # Do you wish to install latest Orc8r build?
-read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
+# read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
 LATEST_ORC8R="${LATEST_ORC8R:-N}"
 
 case ${LATEST_ORC8R} in
