@@ -11,6 +11,14 @@ Switch to `magma` user after deployment has finsished:
 ```bash
 sudo su - magma
 ```
+
+Once all pods are ready set username and password:
+```bash
+cd magma-galaxy
+ansible-playbook config-orc8r.yml
+```
+> Defaults: ID: `admin`, Password: `admin`, Organization: `magma-test`
+
 ---
 
 ### Manual Install
