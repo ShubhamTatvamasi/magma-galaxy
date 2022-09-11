@@ -1,5 +1,8 @@
 # Deploy Magma Orchestrator
 
+Create a Ubuntu Focal VM
+
+
 Quick Install:
 ```bash
 sudo bash -c "$(curl -sL https://github.com/ShubhamTatvamasi/magma-galaxy/raw/master/deploy-orc8r.sh)"
