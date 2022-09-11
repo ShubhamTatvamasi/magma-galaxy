@@ -1,6 +1,6 @@
 # Deploy Magma Orchestrator
 
-Deploy Magma Orchestrator:
+Quick Install:
 ```bash
 sudo bash -c "$(curl -sL https://github.com/ShubhamTatvamasi/magma-galaxy/raw/master/deploy-orc8r.sh)"
 ```
