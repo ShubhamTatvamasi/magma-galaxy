@@ -14,7 +14,11 @@ sudo su - magma
 
 Once all pods are ready, setup NMS login:
 ```bash
-cd magma-galaxy
+cd ~/magma-galaxy
 ansible-playbook config-orc8r.yml
 ```
-> Defaults: ID: `admin`, Password: `admin`, Organization: `magma-test`
+
+You can get your `rootCA.pem` file from the following location:
+```bash
+cat ~/magma-galaxy/secrets/rootCA.pem
+```
