@@ -1,7 +1,6 @@
 # Deploy Magma Orchestrator
 
-Create a Ubuntu Focal VM
-
+Create an Ubuntu Focal VM, take refreence from [multipass](docs/multipass.md) docs.
 
 Quick Install:
 ```bash
