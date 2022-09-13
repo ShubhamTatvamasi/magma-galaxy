@@ -22,8 +22,7 @@ fi
 
 DEFAULT_ORC8R_DOMAIN="magma.local"
 DEFAULT_NMS_ORGANIZATION_NAME="magma-test"
-DEFAULT_NMS_EMAIL_ID="admin"
-DEFAULT_NMS_PASSWORD="admin"
+DEFAULT_NMS_EMAIL_ID_AND_PASSWORD="admin"
 ORC8R_IP=$(hostname -I | awk '{print $1}')
 GITHUB_USERNAME="ShubhamTatvamasi"
 MAGMA_ORC8R_REPO="magma-galaxy"
@@ -37,11 +36,11 @@ ORC8R_DOMAIN="${ORC8R_DOMAIN:-${DEFAULT_ORC8R_DOMAIN}}"
 read -p "NMS organization(subdomain) name you want? [${DEFAULT_NMS_ORGANIZATION_NAME}]: " NMS_ORGANIZATION_NAME
 NMS_ORGANIZATION_NAME="${NMS_ORGANIZATION_NAME:-${DEFAULT_NMS_ORGANIZATION_NAME}}"
 
-read -p "Set your email ID for NMS? [${DEFAULT_NMS_EMAIL_ID}]: " NMS_EMAIL_ID
-NMS_EMAIL_ID="${NMS_EMAIL_ID:-${DEFAULT_NMS_EMAIL_ID}}"
+read -p "Set your email ID for NMS? [${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}]: " NMS_EMAIL_ID
+NMS_EMAIL_ID="${NMS_EMAIL_ID:-${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}}"
 
-read -p "Set your password for NMS? [${DEFAULT_NMS_PASSWORD}]: " NMS_PASSWORD
-NMS_PASSWORD="${NMS_PASSWORD:-${DEFAULT_NMS_PASSWORD}}"
+read -p "Set your password for NMS? [${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}]: " NMS_PASSWORD
+NMS_PASSWORD="${NMS_PASSWORD:-${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}}"
 
 # Do you wish to install latest Orc8r build?
 # read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
