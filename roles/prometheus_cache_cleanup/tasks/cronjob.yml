@@ -23,5 +23,5 @@
                       - sh
                       - '-c'
                       - |
-                        kubectl delete pod -l app.kubernetes.io/component=prometheus-cache
+                        kubectl delete pods -l app.kubernetes.io/component=prometheus-cache
                         kubectl delete jobs --field-selector status.successful=1
