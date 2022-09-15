@@ -1,0 +1,27 @@
+---
+- name: Create CronJob
+  kubernetes.core.k8s:
+    namespace: "{{ magma_namespace }}"
+    definition:
+      apiVersion: batch/v1
+      kind: CronJob
+      metadata:
+        name: prometheus-cache-cleanup-cronjob
+      spec:
+        schedule: "0 0 * * *" # Every 24 hours
+        jobTemplate:
+          spec:
+            template:
+              spec:
+                serviceAccountName: prometheus-cache-cleanup-sa
+                restartPolicy: Never
+                containers:
+                  - name: kubectl
+                    image: bitnami/kubectl
+                    imagePullPolicy: IfNotPresent
+                    command:
+                      - sh
+                      - '-c'
+                      - |
+                        kubectl delete pod -l app.kubernetes.io/component=prometheus-cache
+                        kubectl delete jobs --field-selector status.successful=1

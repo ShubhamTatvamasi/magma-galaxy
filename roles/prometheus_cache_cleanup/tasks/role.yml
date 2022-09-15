@@ -1,0 +1,13 @@
+---
+- name: Create Role
+  kubernetes.core.k8s:
+    namespace: "{{ magma_namespace }}"
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      metadata:
+        name: prometheus-cache-cleanup-role
+      rules:
+        - apiGroups: ["", "batch"]
+          resources: ["pods", "jobs"]
+          verbs: ["list", "delete"]

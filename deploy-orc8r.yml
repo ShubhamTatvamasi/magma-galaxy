@@ -10,6 +10,7 @@
     - role: postgresql
     - role: secrets
     - role: orc8r
+    - role: prometheus_cache_cleanup
     - role: haproxy
     - role: elasticsearch
     - role: fluentd
