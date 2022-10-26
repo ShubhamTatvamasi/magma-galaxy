@@ -43,7 +43,7 @@ read -p "Set your password for NMS? [${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}]: " NM
 NMS_PASSWORD="${NMS_PASSWORD:-${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}}"
 
 # Do you wish to install latest Orc8r build?
-# read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
+read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
 LATEST_ORC8R="${LATEST_ORC8R:-N}"
 
 case ${LATEST_ORC8R} in
