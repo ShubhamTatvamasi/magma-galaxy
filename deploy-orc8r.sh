@@ -29,7 +29,7 @@ MAGMA_ORC8R_REPO="magma-galaxy"
 MAGMA_USER="magma"
 HOSTS_FILE="hosts.yml"
 
-# Set Magma Orchestrator domain name
+# Take input from users
 read -p "Your Magma Orchestrator domain name? [${DEFAULT_ORC8R_DOMAIN}]: " ORC8R_DOMAIN
 ORC8R_DOMAIN="${ORC8R_DOMAIN:-${DEFAULT_ORC8R_DOMAIN}}"
 
@@ -42,7 +42,6 @@ NMS_EMAIL_ID="${NMS_EMAIL_ID:-${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}}"
 read -p "Set your password for NMS? [${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}]: " NMS_PASSWORD
 NMS_PASSWORD="${NMS_PASSWORD:-${DEFAULT_NMS_EMAIL_ID_AND_PASSWORD}}"
 
-# Do you wish to install latest Orc8r build?
 read -p "Do you wish to install latest Orc8r build? [y/N]: " LATEST_ORC8R
 LATEST_ORC8R="${LATEST_ORC8R:-N}"
 
