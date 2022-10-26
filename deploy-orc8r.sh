@@ -29,7 +29,7 @@ MAGMA_ORC8R_REPO="magma-galaxy"
 MAGMA_USER="magma"
 HOSTS_FILE="hosts.yml"
 
-# Take input from users
+# Take input from user
 read -p "Your Magma Orchestrator domain name? [${DEFAULT_ORC8R_DOMAIN}]: " ORC8R_DOMAIN
 ORC8R_DOMAIN="${ORC8R_DOMAIN:-${DEFAULT_ORC8R_DOMAIN}}"
 
