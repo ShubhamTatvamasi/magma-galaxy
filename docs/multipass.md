@@ -2,7 +2,7 @@
 
 Start a new multipass instance with the following command:
 ```bash
-multipass launch focal \
+multipass launch jammy \
   --name orc8r \
   --disk 100G \
   --mem 8G \

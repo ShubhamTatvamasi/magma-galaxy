@@ -8,12 +8,6 @@ if [ $(uname) != "Linux" ]; then
   exit 1
 fi
 
-# Check if the system is Ubuntu Focal
-if [ $(lsb_release -cs) != "focal" ]; then
-  echo "This script will only work on Ubuntu Focal"
-  exit 1
-fi
-
 # Run as root user
 if [ $(id -u) != 0 ]; then
   echo "Please run as root user"
