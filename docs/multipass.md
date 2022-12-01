@@ -28,6 +28,5 @@ vim .ssh/authorized_keys
 
 Delete Instance
 ```bash
-multipass delete orc8r
-multipass purge
+multipass delete --purge orc8r
 ```
