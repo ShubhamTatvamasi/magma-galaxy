@@ -12,7 +12,6 @@
 - name: Get latest rke version
   uri:
     url: https://api.github.com/repos/rancher/rke/tags
-    return_content: yes
   register: latest_rke_version
 
 - name: Set rke version
@@ -22,7 +21,6 @@
 - name: Get latest helm version
   uri:
     url: https://api.github.com/repos/helm/helm/tags
-    return_content: yes
   register: latest_helm_version
 
 - name: Set helm version
