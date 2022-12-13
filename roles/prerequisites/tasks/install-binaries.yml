@@ -16,10 +16,16 @@
     dest: /usr/local/bin/rke
     mode: '0755'
 
+- name: Get kubectl latest version
+  uri:
+    url: https://dl.k8s.io/release/stable.txt
+    return_content: yes
+  register: kubectl_version
+
 - name: Download kubectl binary for {{ ansible_distribution }}
   become: yes
   get_url:
-    url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/{{ operating_system }}/amd64/kubectl
+    url: https://dl.k8s.io/release/{{ kubectl_version.content }}/bin/{{ operating_system }}/amd64/kubectl
     dest: /usr/local/bin/kubectl
     mode: '0755'
 
