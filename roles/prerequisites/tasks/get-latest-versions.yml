@@ -1,0 +1,30 @@
+---
+- name: Get latest kubectl version
+  uri:
+    url: https://dl.k8s.io/release/stable.txt
+    return_content: yes
+  register: latest_kubectl_version
+
+- name: Set kubectl version
+  set_fact:
+    kubectl_version: "{{ latest_kubectl_version.content }}"
+
+- name: Get latest rke version
+  uri:
+    url: https://api.github.com/repos/rancher/rke/tags
+    return_content: yes
+  register: latest_rke_version
+
+- name: Set rke version
+  set_fact:
+    rke_version: "{{ latest_rke_version.json[0].name }}"
+
+- name: Get latest helm version
+  uri:
+    url: https://api.github.com/repos/helm/helm/tags
+    return_content: yes
+  register: latest_helm_version
+
+- name: Set helm version
+  set_fact:
+    helm_version: "{{ latest_helm_version.json[0].name }}"

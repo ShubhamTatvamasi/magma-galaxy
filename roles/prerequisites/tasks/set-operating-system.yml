@@ -1,0 +1,10 @@
+---
+- name: Set darwin as Operating System
+  when: ansible_distribution == "MacOSX"
+  set_fact:
+    operating_system: "darwin"
+
+- name: Set linux as Operating System
+  when: ansible_distribution != "MacOSX"
+  set_fact:
+    operating_system: "linux"

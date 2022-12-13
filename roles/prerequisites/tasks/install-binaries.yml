@@ -1,37 +1,21 @@
 ---
-- name: Set darwin as Operating System
-  when: ansible_distribution == "MacOSX"
-  set_fact:
-    operating_system: "darwin"
-
-- name: Set linux as Operating System
-  when: ansible_distribution != "MacOSX"
-  set_fact:
-    operating_system: "linux"
-
 - name: Download rke binary for {{ ansible_distribution }}
   become: yes
   get_url:
-    url: https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_{{ operating_system }}-amd64
+    url: https://github.com/rancher/rke/releases/download/{{ rke_version }}/rke_{{ operating_system }}-amd64
     dest: /usr/local/bin/rke
     mode: '0755'
-
-- name: Get kubectl latest version
-  uri:
-    url: https://dl.k8s.io/release/stable.txt
-    return_content: yes
-  register: kubectl_version
 
 - name: Download kubectl binary for {{ ansible_distribution }}
   become: yes
   get_url:
-    url: https://dl.k8s.io/release/{{ kubectl_version.content }}/bin/{{ operating_system }}/amd64/kubectl
+    url: https://dl.k8s.io/release/{{ kubectl_version }}/bin/{{ operating_system }}/amd64/kubectl
     dest: /usr/local/bin/kubectl
     mode: '0755'
 
 - name: Download helm binary for {{ ansible_distribution }}
   unarchive:
-    src: https://get.helm.sh/helm-v{{ helm_version }}-{{ operating_system }}-amd64.tar.gz
+    src: https://get.helm.sh/helm-{{ helm_version }}-{{ operating_system }}-amd64.tar.gz
     dest: /tmp
     remote_src: yes
 
