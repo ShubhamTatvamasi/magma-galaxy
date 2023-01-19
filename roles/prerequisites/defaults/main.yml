@@ -1,5 +1,5 @@
 ---
-rke_version: "1.4.1"
+rke_version: "v1.4.1"
 helm_version: "3.11.0"
 kubectl_version: "1.25.4"
 magma_directory: "magma-galaxy"
