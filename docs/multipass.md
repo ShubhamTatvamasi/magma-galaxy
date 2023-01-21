@@ -5,7 +5,7 @@ Start a new multipass instance with the following command:
 multipass launch jammy \
   --name orc8r \
   --disk 100G \
-  --mem 8G \
+  --memory 8G \
   --cpus 4
 ```
 
