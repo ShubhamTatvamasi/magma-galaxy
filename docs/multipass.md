@@ -1,5 +1,10 @@
 # Multipass Setup
 
+Start multipass if it's not running:
+```bash
+sudo snap restart multipass.multipassd
+```
+
 Start a new multipass instance with the following command:
 ```bash
 multipass launch jammy \
