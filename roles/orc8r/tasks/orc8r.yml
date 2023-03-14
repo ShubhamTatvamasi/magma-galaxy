@@ -66,8 +66,6 @@
                 persistentVolumeClaim:
                   claimName: promdata
         userGrafana:
-          image:
-            tag: 6.7.6
           volumes:
             datasources:
               volumeSpec:
