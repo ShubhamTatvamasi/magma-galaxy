@@ -1,7 +1,7 @@
 ---
 orc8r_domain: ""
 magma_namespace: "orc8r"
-magma_docker_registry: "magmacore"
+magma_docker_registry: "linuxfoundation.jfrog.io/magma-docker"
 magma_docker_tag: "1.8.0"
 magma_directory: "magma-galaxy"
 magma_service_type: "ClusterIP"
