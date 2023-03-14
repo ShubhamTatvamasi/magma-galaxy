@@ -56,7 +56,7 @@ add-apt-repository --yes ppa:ansible/ansible
 apt install yq ansible -y
 
 # Create magma user and give sudo permissions
-useradd -m ${MAGMA_USER} -s /bin/bash -p $(echo ${MAGMA_USER} | openssl passwd -1 -stdin) -G sudo
+useradd -m ${MAGMA_USER} -s /bin/bash -G sudo
 echo "${MAGMA_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # switch to magma user

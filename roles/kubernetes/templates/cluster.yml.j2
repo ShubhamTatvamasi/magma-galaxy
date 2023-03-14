@@ -130,7 +130,7 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.9.3
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.21.1
-  kubernetes: rancher/hyperkube:v1.24.9-rancher1
+  kubernetes: rancher/hyperkube:v1.24.10-rancher4
   flannel: rancher/mirrored-coreos-flannel:v0.15.1
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher6
   calico_node: rancher/mirrored-calico-node:v3.22.5
@@ -146,10 +146,10 @@ system_images:
   weave_node: weaveworks/weave-kube:2.8.1
   weave_cni: weaveworks/weave-npc:2.8.1
   pod_infra_container: rancher/mirrored-pause:3.6
-  ingress: rancher/nginx-ingress-controller:nginx-1.2.1-rancher1
+  ingress: rancher/nginx-ingress-controller:nginx-1.5.1-rancher2
   ingress_backend: rancher/mirrored-nginx-ingress-controller-defaultbackend:1.5-rancher1
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.1.1
-  metrics_server: rancher/mirrored-metrics-server:v0.6.1
+  metrics_server: rancher/mirrored-metrics-server:v0.6.2
   windows_pod_infra_container: rancher/mirrored-pause:3.6
   aci_cni_deploy_container: noiro/cnideploy:5.2.3.5.1d150da
   aci_host_container: noiro/aci-containers-host:5.2.3.5.1d150da

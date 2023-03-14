@@ -13,4 +13,4 @@
         name: prometheus-cache-cleanup-role
       subjects:
         - kind: ServiceAccount
-          name: prometheus-cache-cleanup-sa
+          name: "{{ prometheus_service_account_name }}"

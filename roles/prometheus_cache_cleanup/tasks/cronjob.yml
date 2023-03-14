@@ -13,7 +13,7 @@
           spec:
             template:
               spec:
-                serviceAccountName: prometheus-cache-cleanup-sa
+                serviceAccountName: "{{ prometheus_service_account_name }}"
                 restartPolicy: Never
                 containers:
                   - name: kubectl
