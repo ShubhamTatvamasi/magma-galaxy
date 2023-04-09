@@ -1,5 +1,5 @@
 ---
-- name: Install Ingress NGINX
+- name: Install Ingress Nginx
   kubernetes.core.helm:
     name: ingress-nginx
     chart_ref: ingress-nginx/ingress-nginx
@@ -10,3 +10,5 @@
       controller:
         extraArgs:
           enable-ssl-passthrough: "true"
+        ingressClassResource:
+          default: "true"
