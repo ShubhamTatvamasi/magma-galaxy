@@ -23,7 +23,6 @@ MAGMA_ORC8R_REPO="magma-galaxy"
 MAGMA_USER="magma"
 HOSTS_FILE="hosts.yml"
 
-
 # Take input from user
 read -rp "Your Magma Orchestrator domain name: " -ei "${ORC8R_DOMAIN}" ORC8R_DOMAIN
 
@@ -33,7 +32,7 @@ read -rp "Set your email ID for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_EM
 
 read -rp "Set your password for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_PASSWORD
 
-read -rp "Do you wish to install latest Orc8r build: " -ei "No" LATEST_ORC8R
+read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
 
 case ${LATEST_ORC8R} in
   [yY]*)
