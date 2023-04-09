@@ -52,6 +52,7 @@ services:
     service_cluster_ip_range: 10.43.0.0/16
     service_node_port_range: ""
     pod_security_policy: false
+    pod_security_configuration: ""
     always_pull_images: false
     secrets_encryption_config: null
     audit_log: null
@@ -118,31 +119,31 @@ authentication:
 addons: ""
 addons_include: []
 system_images:
-  etcd: rancher/mirrored-coreos-etcd:v3.5.4
-  alpine: rancher/rke-tools:v0.1.88
-  nginx_proxy: rancher/rke-tools:v0.1.88
-  cert_downloader: rancher/rke-tools:v0.1.88
-  kubernetes_services_sidecar: rancher/rke-tools:v0.1.88
-  kubedns: rancher/mirrored-k8s-dns-kube-dns:1.21.1
-  dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.21.1
-  kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.21.1
-  kubedns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
-  coredns: rancher/mirrored-coredns-coredns:1.9.3
-  coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.5
-  nodelocal: rancher/mirrored-k8s-dns-node-cache:1.21.1
-  kubernetes: rancher/hyperkube:v1.24.10-rancher4
-  flannel: rancher/mirrored-coreos-flannel:v0.15.1
-  flannel_cni: rancher/flannel-cni:v0.3.0-rancher6
-  calico_node: rancher/mirrored-calico-node:v3.22.5
-  calico_cni: rancher/calico-cni:v3.22.5-rancher1
-  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.22.5
-  calico_ctl: rancher/mirrored-calico-ctl:v3.22.5
-  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.22.5
-  canal_node: rancher/mirrored-calico-node:v3.22.5
-  canal_cni: rancher/calico-cni:v3.22.5-rancher1
-  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.22.5
-  canal_flannel: rancher/mirrored-flannelcni-flannel:v0.17.0
-  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.22.5
+  etcd: rancher/mirrored-coreos-etcd:v3.5.6
+  alpine: rancher/rke-tools:v0.1.87
+  nginx_proxy: rancher/rke-tools:v0.1.87
+  cert_downloader: rancher/rke-tools:v0.1.87
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.87
+  kubedns: rancher/mirrored-k8s-dns-kube-dns:1.22.8
+  dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.22.8
+  kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.22.8
+  kubedns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.6
+  coredns: rancher/mirrored-coredns-coredns:1.9.4
+  coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.6
+  nodelocal: rancher/mirrored-k8s-dns-node-cache:1.22.10
+  kubernetes: rancher/hyperkube:v1.25.6-rancher4
+  flannel: rancher/mirrored-flannelcni-flannel:v0.19.2
+  flannel_cni: rancher/flannel-cni:v0.3.0-rancher7
+  calico_node: rancher/mirrored-calico-node:v3.24.1
+  calico_cni: rancher/calico-cni:v3.24.1-rancher1
+  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.24.1
+  calico_ctl: rancher/mirrored-calico-ctl:v3.24.1
+  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.24.1
+  canal_node: rancher/mirrored-calico-node:v3.24.1
+  canal_cni: rancher/calico-cni:v3.24.1-rancher1
+  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.24.1
+  canal_flannel: rancher/mirrored-flannelcni-flannel:v0.19.2
+  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.24.1
   weave_node: weaveworks/weave-kube:2.8.1
   weave_cni: weaveworks/weave-npc:2.8.1
   pod_infra_container: rancher/mirrored-pause:3.6
