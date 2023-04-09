@@ -5,8 +5,8 @@
     - role: prerequisites
     - role: docker
     - role: kubernetes
-    - role: openebs
     - role: metallb
+    - role: openebs
     - role: postgresql
     - role: secrets
     - role: orc8r

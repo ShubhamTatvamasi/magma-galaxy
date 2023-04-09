@@ -1,8 +1,9 @@
 ---
 - name: Create IP Address Pool
+  ignore_errors: yes
   register: result
   until: result is not failed
-  retries: 50
+  retries: 100
   delay: 10
   kubernetes.core.k8s:
     namespace: metallb-system

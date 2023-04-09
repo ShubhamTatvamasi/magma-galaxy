@@ -18,5 +18,5 @@
   when: deploy_on_aws
   import_tasks: metallb-speaker.yml
 
-# - name: Create IP Address Pool
-#   import_tasks: ip-pool.yml
+- name: Create IP Address Pool
+  import_tasks: ip-pool.yml
