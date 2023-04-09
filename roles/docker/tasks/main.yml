@@ -8,7 +8,8 @@
   become: yes
   user:
     name: "{{ ansible_user }}"
-    group: docker
+    groups: docker
+    append: yes
 
 - name: Pull alpine docker image
   become: yes
