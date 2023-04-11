@@ -25,14 +25,11 @@ HOSTS_FILE="hosts.yml"
 
 # Take input from user
 read -rp "Your Magma Orchestrator domain name: " -ei "${ORC8R_DOMAIN}" ORC8R_DOMAIN
-
 read -rp "NMS organization(subdomain) name you want: " -ei "${NMS_ORGANIZATION_NAME}" NMS_ORGANIZATION_NAME
-
 read -rp "Set your email ID for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_EMAIL_ID
-
 read -rp "Set your password for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_PASSWORD
-
 read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
+read -rp "Set your LoadBalancer IP: " -ei "${ORC8R_IP}" ORC8R_IP
 
 case ${LATEST_ORC8R} in
   [yY]*)
