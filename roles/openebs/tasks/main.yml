@@ -6,13 +6,7 @@
     release_namespace: openebs
     chart_version: "{{ openebs_chart_version }}"
     create_namespace: true
-
-- name: Set {{ default_storage_class }} as default storage class
-  kubernetes.core.k8s:
-    state: patched
-    kind: StorageClass
-    name: "{{ default_storage_class }}"
-    definition:
-      metadata:
-        annotations:
-          storageclass.kubernetes.io/is-default-class: "true"
+    values:
+      localprovisioner:
+        hostpathClass:
+          isDefaultClass: true

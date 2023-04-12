@@ -1,3 +1,2 @@
 ---
-default_storage_class: "openebs-hostpath"
 openebs_chart_version: "3.5.0"
