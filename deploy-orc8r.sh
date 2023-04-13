@@ -17,7 +17,7 @@ fi
 ORC8R_DOMAIN="magma.local"
 NMS_ORGANIZATION_NAME="magma-test"
 NMS_EMAIL_ID_AND_PASSWORD="admin"
-ORC8R_IP=$(hostname -I | awk '{print $1}')
+ORC8R_IP=$(ip a s $(ip r | head -n 1 | awk '{print $5}') | awk '/inet/ {print $2}' | cut -d / -f 1 | head -n 1)
 GITHUB_USERNAME="ShubhamTatvamasi"
 MAGMA_ORC8R_REPO="magma-galaxy"
 MAGMA_USER="magma"
