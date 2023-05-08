@@ -18,7 +18,7 @@ ORC8R_DOMAIN="magma.local"
 NMS_ORGANIZATION_NAME="magma-test"
 NMS_EMAIL_ID_AND_PASSWORD="admin"
 ORC8R_IP=$(ip a s $(ip r | head -n 1 | awk '{print $5}') | awk '/inet/ {print $2}' | cut -d / -f 1 | head -n 1)
-GITHUB_USERNAME="ShubhamTatvamasi"
+GITHUB_USERNAME="venko-networks"
 MAGMA_ORC8R_REPO="magma-galaxy"
 MAGMA_USER="magma"
 HOSTS_FILE="hosts.yml"
@@ -28,17 +28,19 @@ read -rp "Your Magma Orchestrator domain name: " -ei "${ORC8R_DOMAIN}" ORC8R_DOM
 read -rp "NMS organization(subdomain) name you want: " -ei "${NMS_ORGANIZATION_NAME}" NMS_ORGANIZATION_NAME
 read -rp "Set your email ID for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_EMAIL_ID
 read -rp "Set your password for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_PASSWORD
-read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
+#read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
 read -rp "Set your LoadBalancer IP: " -ei "${ORC8R_IP}" ORC8R_IP
 
-case ${LATEST_ORC8R} in
-  [yY]*)
-    ORC8R_VERSION="latest"
-    ;;
-  [nN]*)
-    ORC8R_VERSION="stable"
-    ;;
-esac
+#These was commented to force ORC8R to use the latest version. 
+#case ${LATEST_ORC8R} in
+#  [yY]*)
+#    ORC8R_VERSION="latest"
+#    ;;
+#  [nN]*)
+#    ORC8R_VERSION="stable"
+#    ;;
+#esac
+ORC8R_VERSION="latest"
 
 # Add repos for installing yq and ansible
 add-apt-repository --yes ppa:rmescandon/yq
