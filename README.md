@@ -36,7 +36,7 @@ Create an Ubuntu VM, with the following requirements:
 
 Quick Install:
 ```bash
-sudo bash -c "$(curl -sL https://github.com/venko-networks/magma-galaxy/raw/master/deploy-orc8r.sh)"
+sudo bash -c "$(curl -sL https://github.com/venko-networks/magma-galaxy/raw/1.8.2/deploy-orc8r.sh)"
 ```
 
 Switch to `magma` user after deployment has finsished:
