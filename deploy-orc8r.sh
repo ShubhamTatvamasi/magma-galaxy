@@ -28,19 +28,19 @@ read -rp "Your Magma Orchestrator domain name: " -ei "${ORC8R_DOMAIN}" ORC8R_DOM
 read -rp "NMS organization(subdomain) name you want: " -ei "${NMS_ORGANIZATION_NAME}" NMS_ORGANIZATION_NAME
 read -rp "Set your email ID for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_EMAIL_ID
 read -rp "Set your password for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_PASSWORD
-#read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
+read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
 read -rp "Set your LoadBalancer IP: " -ei "${ORC8R_IP}" ORC8R_IP
 
-#These was commented to force ORC8R to use the latest version. 
-#case ${LATEST_ORC8R} in
-#  [yY]*)
-#    ORC8R_VERSION="latest"
-#    ;;
-#  [nN]*)
-#    ORC8R_VERSION="stable"
-#    ;;
-#esac
-ORC8R_VERSION="latest"
+These was commented to force ORC8R to use the latest version. 
+case ${LATEST_ORC8R} in
+  [yY]*)
+    ORC8R_VERSION="latest"
+    ;;
+  [nN]*)
+    ORC8R_VERSION="stable"
+    ;;
+esac
+
 
 # Add repos for installing yq and ansible
 add-apt-repository --yes ppa:rmescandon/yq
@@ -66,8 +66,7 @@ cd ~/${MAGMA_ORC8R_REPO}
 
 # Depoly latest Orc8r build
 if [ "${ORC8R_VERSION}" == "latest" ]; then
-  sed "s/# magma_docker/magma_docker/g" -i ${HOSTS_FILE}
-  sed "s/# orc8r_helm_repo/orc8r_helm_repo/" -i ${HOSTS_FILE}
+  sed "s/1.8.0-master/1.8.2/g" -i ${HOSTS_FILE}
 fi
 
 # export variables for yq
