@@ -31,7 +31,7 @@ read -rp "Set your password for NMS: " -ei "${NMS_EMAIL_ID_AND_PASSWORD}" NMS_PA
 read -rp "Do you wish to install latest Orc8r build: " -ei "Yes" LATEST_ORC8R
 read -rp "Set your LoadBalancer IP: " -ei "${ORC8R_IP}" ORC8R_IP
 
-These was commented to force ORC8R to use the latest version. 
+#These was commented to force ORC8R to use the latest version. 
 case ${LATEST_ORC8R} in
   [yY]*)
     ORC8R_VERSION="latest"
