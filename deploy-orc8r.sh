@@ -50,8 +50,19 @@ add-apt-repository --yes ppa:ansible/ansible
 apt install yq ansible -y
 
 # Create magma user and give sudo permissions
-useradd -m ${MAGMA_USER} -s /bin/bash -G sudo
-echo "${MAGMA_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+if id ${MAGMA_USER} >/dev/null 2>&1; then
+    echo "${MAGMA_USER} Magma user already exists"
+else
+    echo "Create ${MAGMA_USER} user..."
+    useradd -m ${MAGMA_USER} -s /bin/bash -G sudo
+fi
+# add magma to sudoers
+if sudo grep -q ${MAGMA_USER} /etc/sudoers ; then
+    echo "${MAGMA_USER} already in sudoers..."
+else
+    echo "Adding ${MAGMA_USER} to sudoers..."
+    echo "${MAGMA_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+fi
 
 # switch to magma user
 su - ${MAGMA_USER} -c bash <<_
