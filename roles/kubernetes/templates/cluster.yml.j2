@@ -49,7 +49,7 @@ services:
     win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
-    service_cluster_ip_range: 10.43.0.0/16
+    service_cluster_ip_range: 10.43.0.0/16,fd98::/108
     service_node_port_range: ""
     pod_security_policy: false
     pod_security_configuration: ""
@@ -68,8 +68,8 @@ services:
     win_extra_args_array: {}
     win_extra_binds: []
     win_extra_env: []
-    cluster_cidr: 10.42.0.0/16
-    service_cluster_ip_range: 10.43.0.0/16
+    cluster_cidr: 10.42.0.0/16,fd01::/64
+    service_cluster_ip_range: 10.43.0.0/16,fd98::/108
   scheduler:
     image: ""
     extra_args: {}
@@ -106,7 +106,7 @@ services:
     win_extra_binds: []
     win_extra_env: []
 network:
-  plugin: canal
+  plugin: calico
   options: {}
   mtu: 0
   node_selector: {}
