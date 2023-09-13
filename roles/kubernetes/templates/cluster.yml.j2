@@ -120,10 +120,10 @@ addons: ""
 addons_include: []
 system_images:
   etcd: rancher/mirrored-coreos-etcd:v3.5.6
-  alpine: rancher/rke-tools:v0.1.89
-  nginx_proxy: rancher/rke-tools:v0.1.89
-  cert_downloader: rancher/rke-tools:v0.1.89
-  kubernetes_services_sidecar: rancher/rke-tools:v0.1.89
+  alpine: rancher/rke-tools:v0.1.90
+  nginx_proxy: rancher/rke-tools:v0.1.90
+  cert_downloader: rancher/rke-tools:v0.1.90
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.90
   kubedns: rancher/mirrored-k8s-dns-kube-dns:1.22.20
   dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.22.20
   kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.22.20
@@ -131,7 +131,7 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.9.4
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.6
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.22.20
-  kubernetes: rancher/hyperkube:v1.26.6-rancher1
+  kubernetes: rancher/hyperkube:v1.26.8-rancher1
   flannel: rancher/mirrored-flannel-flannel:v0.21.4
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher8
   calico_node: rancher/mirrored-calico-node:v3.25.0
@@ -152,14 +152,14 @@ system_images:
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v20230312-helm-chart-4.5.2-28-g66a760794
   metrics_server: rancher/mirrored-metrics-server:v0.6.3
   windows_pod_infra_container: rancher/mirrored-pause:3.7
-  aci_cni_deploy_container: noiro/cnideploy:5.2.7.1.81c2369
-  aci_host_container: noiro/aci-containers-host:5.2.7.1.81c2369
-  aci_opflex_container: noiro/opflex:5.2.7.1.81c2369
-  aci_mcast_container: noiro/opflex:5.2.7.1.81c2369
-  aci_ovs_container: noiro/openvswitch:5.2.7.1.81c2369
-  aci_controller_container: noiro/aci-containers-controller:5.2.7.1.81c2369
-  aci_gbp_server_container: noiro/gbp-server:5.2.7.1.81c2369
-  aci_opflex_server_container: noiro/opflex-server:5.2.7.1.81c2369
+  aci_cni_deploy_container: noiro/cnideploy:6.0.3.1.81c2369
+  aci_host_container: noiro/aci-containers-host:6.0.3.1.81c2369
+  aci_opflex_container: noiro/opflex:6.0.3.1.81c2369
+  aci_mcast_container: noiro/opflex:6.0.3.1.81c2369
+  aci_ovs_container: noiro/openvswitch:6.0.3.1.81c2369
+  aci_controller_container: noiro/aci-containers-controller:6.0.3.1.81c2369
+  aci_gbp_server_container: ""
+  aci_opflex_server_container: ""
 ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
 ssh_cert_path: ""
 ssh_agent_auth: false
