@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 #Script para configuraçao do AGW
 #Definir as variáveis abaixo para configuração:
