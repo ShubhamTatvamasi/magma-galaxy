@@ -6,9 +6,9 @@ set -e
 
 
 MAGMA_DIR=/var/opt/magma/
-read -rp "Insira o IP do Orc8r" ORC8R_IP
-read -rp "Insira a portado Orc8r (Default 443)" -ei 443 ORC8R_SERVICE_PORT
-read -rp "Insira o dominio a ser utilizado" DOMAIN
+read -rp "Insira o IP do Orc8r: " ORC8R_IP
+read -rp "Insira a portado Orc8r (Default 443): " -ei 443 ORC8R_SERVICE_PORT
+read -rp "Insira o dominio a ser utilizado: " DOMAIN
 IP_ETH0=$(ip a s eth0 | awk '/inet/ {print $2}' | head -n 1)
 CONFIG_DIR=/etc/magma
 
