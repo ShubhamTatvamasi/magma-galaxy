@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #Script para configuraçao do AGW
