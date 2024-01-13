@@ -1,0 +1,20 @@
+*** Targets ***
+
+probe = FPing
+
+menu = Top
+title = Network Latency Grapher
+remark = Welcome to the SmokePing website of xxxxx.
+
++ Local
+menu = Local
+title = My Servers
+++ localhost
+menu = localhost
+title = This host
+host = localhost
+
++ External
+menu = Radio
+title = Radio
+host = 10.0.2.100

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  smokeping:
+    image: linuxserver/smokeping
+    container_name: smokeping
+    restart: always
+    environment:
+      - PUID=0  # substitua pelo seu UID
+      - PGID=0  # substitua pelo seu GID
+      - TZ=America/Sao_Paulo  # substitua pelo seu fuso horário
+    ports:
+      - "80:80"
+    volumes:
+      - ./config:/config

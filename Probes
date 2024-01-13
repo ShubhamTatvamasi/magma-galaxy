@@ -1,0 +1,8 @@
+*** Probes ***
+
++ FPing
+
+binary = /usr/sbin/fping
+step = 300
+timeout = 15
+pings = 20
