@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-# Function to configure Magma
 configureMagma() {
-    # Your existing Magma configuration code here
 
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
@@ -42,9 +40,7 @@ EOT
     exit 0
 }
 
-# Function to install SmokePing
 installSmokePing() {
-    # Your existing SmokePing installation code here
     apt install docker.io docker-compose -y
     DIR=/root/smokeping/
     sudo mkdir -p $DIR
@@ -88,6 +84,7 @@ case $choice in
         wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb
         sudo dpkg -i gcc-10-base_10.2.1-6_amd64.deb liblsan0_10.2.1-6_amd64.deb
         apt-mark hold gcc-10-base liblsan0
+        cd /root/smokeping && docker-compose up -d
         ;;
     *)
         echo "Opção inválida. Saindo."
