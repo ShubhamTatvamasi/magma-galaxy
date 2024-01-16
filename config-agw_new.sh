@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
-set -e
+set -ex
+
+downgradePkts() {
+    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb
+    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb
+    sudo dpkg -i gcc-10-base_10.2.1-6_amd64.deb liblsan0_10.2.1-6_amd64.deb
+    apt-mark hold gcc-10-base liblsan0
+}
+
 
 configureMagma() {
 
@@ -26,18 +34,10 @@ EOT
 
     pip3 install -r requirements.txt
 
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb 
-    sudo dpkg -i gcc-10-base_10.2.1-6_amd64.deb liblsan0_10.2.1-6_amd64.deb
-    apt-mark hold gcc-10-base
-    apt-mark hold liblsan0
-
     sudo sed -i 's/^\(.*\)APT::Periodic::Update-Package-Lists\(.*\)$/#\1APT::Periodic::Update-Package-Lists\2/' /etc/apt/apt.conf.d/20auto-upgrades
     sudo systemctl restart unattended-upgrades
 
     systemctl start magma@magmad
-
-    exit 0
 }
 
 installSmokePing() {
@@ -61,8 +61,7 @@ installSmokePing() {
         curl -sL "${files_to_download[i]}" >> "${destination_paths[i]}"
     done
 
-
-    exit 0
+    cd /root/smokeping && docker-compose up -d
 }
 
 # Menu
@@ -74,17 +73,16 @@ read -p "Digite o número da opção desejada: " choice
 case $choice in
     1)
         configureMagma
-        installSmokePing
+        installSmokePing   
+        downgradePkts
+        exit 0
         ;;
     2)
         apt-mark unhold gcc-10-base liblsan0
         apt --fix-broken install -y
         installSmokePing
-        wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb
-        wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb
-        sudo dpkg -i gcc-10-base_10.2.1-6_amd64.deb liblsan0_10.2.1-6_amd64.deb
-        apt-mark hold gcc-10-base liblsan0
-        cd /root/smokeping && docker-compose up -d
+        downgradePkts
+        exit 0
         ;;
     *)
         echo "Opção inválida. Saindo."
