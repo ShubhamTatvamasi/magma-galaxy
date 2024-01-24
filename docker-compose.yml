@@ -2,12 +2,12 @@ version: '3'
 
 services:
   smokeping:
-    image: linuxserver/smokeping
+    image: lscr.io/linuxserver/smokeping:2.7.3-r9-ls39
     container_name: smokeping
-    restart: always
+    restart: unless-stopped
     environment:
-      - PUID=0  # substitua pelo seu UID
-      - PGID=0  # substitua pelo seu GID
+      - PUID=102  # substitua pelo seu UID
+      - PGID=102  # substitua pelo seu GID
       - TZ=America/Sao_Paulo  # substitua pelo seu fuso horário
     ports:
       - "80:80"

@@ -6,15 +6,12 @@ menu = Top
 title = Network Latency Grapher
 remark = Welcome to the SmokePing website of xxxxx.
 
-+ Local
-menu = Local
-title = My Servers
-++ localhost
-menu = localhost
-title = This host
-host = localhost
++ Radios
+menu = Radios
+title = Radios
 
-+ External
-menu = Radio
-title = Radio
+++ Radio1
 host = 10.0.2.100
+
+++ Radio2
+host = 10.0.2.101
