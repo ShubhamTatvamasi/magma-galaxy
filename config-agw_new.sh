@@ -35,6 +35,17 @@ configureMagma() {
     $ORC8R_IP controller.$DOMAIN
     $ORC8R_IP bootstrapper-controller.$DOMAIN
 EOT
+
+    sudo cat <<EOT >> $MAGMA_DIR/configs/control_proxy.yml
+    cloud_address: controller.$DOMAIN
+    cloud_port: $ORC8R_SERVICE_PORT
+    bootstrap_address: bootstrapper-controller.$DOMAIN
+    bootstrap_port: $ORC8R_SERVICE_PORT
+    fluentd_address: fluentd.$DOMAIN
+    fluentd_port: $ORC8R_SERVICE_PORT
+
+    rootca_cert: /var/opt/magma/certs/rootCA.pem
+EOT
     
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
