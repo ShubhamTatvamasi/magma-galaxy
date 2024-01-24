@@ -55,7 +55,7 @@ configureMagma() {
     Jinja2==3.0.3
     prometheus_client==0.3.1
     setuptools==49.6.0
-EOT
+    EOT
 
     pip3 install -r requirements.txt
 
