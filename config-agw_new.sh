@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
+systemctl stop magma@*
+
 downgradePkts() {
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb
@@ -10,6 +12,29 @@ downgradePkts() {
 
 
 configureMagma() {
+
+    MAGMA_DIR=/var/opt/magma/
+    read -rp "Insira o IP do Orc8r: " ORC8R_IP
+    read -rp "Insira a portado Orc8r (Default 443): " -ei 443 ORC8R_SERVICE_PORT
+    read -rp "Insira o dominio a ser utilizado: " DOMAIN
+    IP_ETH0=$(ip a s eth0 | awk '/inet/ {print $2}' | head -n 1)
+    CONFIG_DIR=/etc/magma
+
+    apt install docker.io docker-compose -y
+    # Cria diretórios e arquivos necessários.
+
+    sudo mkdir -p $MAGMA_DIR/configs
+
+    # Cria os arquivos necessários
+    sudo cat <<EOT >> /etc/hosts
+    $ORC8R_IP api.$DOMAIN
+    $ORC8R_IP magma.nms.$DOMAIN
+    $ORC8R_IP host.nms.$DOMAIN
+    $ORC8R_IP fluentd.$DOMAIN
+    $ORC8R_IP controller.$DOMAIN
+    $ORC8R_IP bootstrapper-controller.$DOMAIN
+    EOT
+
 
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
@@ -37,7 +62,7 @@ EOT
     sudo sed -i 's/^\(.*\)APT::Periodic::Update-Package-Lists\(.*\)$/#\1APT::Periodic::Update-Package-Lists\2/' /etc/apt/apt.conf.d/20auto-upgrades
     sudo systemctl restart unattended-upgrades
 
-    systemctl start magma@magmad
+    
 }
 
 installSmokePing() {
@@ -75,6 +100,7 @@ case $choice in
         configureMagma
         installSmokePing   
         downgradePkts
+        systemctl start magma@magmad
         exit 0
         ;;
     2)
@@ -82,6 +108,7 @@ case $choice in
         apt --fix-broken install -y
         installSmokePing
         downgradePkts
+        systemctl start magma@magmad
         exit 0
         ;;
     *)
