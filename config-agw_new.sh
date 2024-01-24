@@ -28,23 +28,23 @@ configureMagma() {
     # Cria os arquivos necessários
     
     sudo cat <<EOT >> /etc/hosts
-    $ORC8R_IP api.$DOMAIN
-    $ORC8R_IP magma.nms.$DOMAIN
-    $ORC8R_IP host.nms.$DOMAIN
-    $ORC8R_IP fluentd.$DOMAIN
-    $ORC8R_IP controller.$DOMAIN
-    $ORC8R_IP bootstrapper-controller.$DOMAIN
+$ORC8R_IP api.$DOMAIN
+$ORC8R_IP magma.nms.$DOMAIN
+$ORC8R_IP host.nms.$DOMAIN
+$ORC8R_IP fluentd.$DOMAIN
+$ORC8R_IP controller.$DOMAIN
+$ORC8R_IP bootstrapper-controller.$DOMAIN
 EOT
 
     sudo cat <<EOT >> $MAGMA_DIR/configs/control_proxy.yml
-    cloud_address: controller.$DOMAIN
-    cloud_port: $ORC8R_SERVICE_PORT
-    bootstrap_address: bootstrapper-controller.$DOMAIN
-    bootstrap_port: $ORC8R_SERVICE_PORT
-    fluentd_address: fluentd.$DOMAIN
-    fluentd_port: $ORC8R_SERVICE_PORT
+cloud_address: controller.$DOMAIN
+cloud_port: $ORC8R_SERVICE_PORT
+bootstrap_address: bootstrapper-controller.$DOMAIN
+bootstrap_port: $ORC8R_SERVICE_PORT
+fluentd_address: fluentd.$DOMAIN
+fluentd_port: $ORC8R_SERVICE_PORT
 
-    rootca_cert: /var/opt/magma/certs/rootCA.pem
+rootca_cert: /var/opt/magma/certs/rootCA.pem
 EOT
     
     echo -e "\n\n############\t\tArquivos criados"
@@ -63,10 +63,10 @@ EOT
 
     
     cat <<EOT >> requirements.txt
-    jsonschema==3.1.0
-    Jinja2==3.0.3
-    prometheus_client==0.3.1
-    setuptools==49.6.0
+jsonschema==3.1.0
+Jinja2==3.0.3
+prometheus_client==0.3.1
+setuptools==49.6.0
 EOT
 
     pip3 install -r requirements.txt
