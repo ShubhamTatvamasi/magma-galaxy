@@ -35,7 +35,6 @@ configureMagma() {
     $ORC8R_IP bootstrapper-controller.$DOMAIN
     EOT
 
-
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
     cat /etc/hosts
@@ -50,12 +49,14 @@ configureMagma() {
 
     # Perform additional corrections in the installation
 
+    (
     cat <<EOT >> requirements.txt
     jsonschema==3.1.0
     Jinja2==3.0.3
     prometheus_client==0.3.1
     setuptools==49.6.0
     EOT
+    ) 
 
     pip3 install -r requirements.txt
 
