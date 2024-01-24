@@ -26,6 +26,7 @@ configureMagma() {
     sudo mkdir -p $MAGMA_DIR/configs
 
     # Cria os arquivos necessários
+    (
     sudo cat <<EOT >> /etc/hosts
     $ORC8R_IP api.$DOMAIN
     $ORC8R_IP magma.nms.$DOMAIN
@@ -33,8 +34,8 @@ configureMagma() {
     $ORC8R_IP fluentd.$DOMAIN
     $ORC8R_IP controller.$DOMAIN
     $ORC8R_IP bootstrapper-controller.$DOMAIN
-    EOT
-
+EOT
+    )
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
     cat /etc/hosts
@@ -55,7 +56,7 @@ configureMagma() {
     Jinja2==3.0.3
     prometheus_client==0.3.1
     setuptools==49.6.0
-    EOT
+EOT
     ) 
 
     pip3 install -r requirements.txt
