@@ -4,9 +4,9 @@ set -ex
 systemctl stop magma@*
 
 downgradePkts() {
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb
-    sudo dpkg -i gcc-10-base_10.2.1-6_amd64.deb liblsan0_10.2.1-6_amd64.deb
+    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
+    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb -O /tmp/gcc10.deb
+    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb
     apt-mark hold gcc-10-base liblsan0
 }
 
