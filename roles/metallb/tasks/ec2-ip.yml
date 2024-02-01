@@ -1,8 +1,23 @@
 ---
+- name: Get token from AWS EC2 metadata service
+  uri:
+    url: "http://169.254.169.254/latest/api/token"
+    return_content: yes
+    method: PUT
+    headers:
+      X-aws-ec2-metadata-token-ttl-seconds: "21600"
+  register: token_response
+
+- name: Store token in variable
+  set_fact:
+    aws_ec2_metadata_token: "{{ token_response.content }}"
+
 - name: Get EC2 instance local IP
   uri:
     url: http://169.254.169.254/latest/meta-data/local-ipv4
     return_content: yes
+    headers:
+      X-aws-ec2-metadata-token: "{{ aws_ec2_metadata_token }}"
   register: ec2_private_ip
 
 - name: Set MetallLB IP of EC2 instance
