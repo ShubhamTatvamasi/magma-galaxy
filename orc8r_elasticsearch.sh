@@ -9,10 +9,10 @@ pod_status=$(kubectl get pod elasticsearch-master-0 --no-headers | awk '{print $
 
 # Verifica se o pod está pronto
 if [[ "$pod_status" == "0/1" ]]; then
-    echo "O pod Elasticsearch não está pronto. Executando playbook Ansible..."
+    echo "O pod Elasticsearch não está pronto. Executando playbook Ansible..." >> verified.txt
     ansible-playbook /home/magma/magma-galaxy/fix-elasticsearch.yml
 else
-    echo "O pod Elasticsearch está pronto."
+    echo "O pod Elasticsearch está pronto." >> verified.txt
 fi
 EOT
 chmod +x /home/magma/magma-galaxy/check_pod_status.sh
@@ -23,6 +23,7 @@ Description=Verificar status do pod Elasticsearch e executar playbook Ansible
 After=network.target
 
 [Service]
+User=magma
 Type=simple
 ExecStart=/home/magma/magma-galaxy/check_pod_status.sh
 
