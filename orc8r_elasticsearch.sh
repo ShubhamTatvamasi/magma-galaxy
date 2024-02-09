@@ -5,7 +5,7 @@ cat <<EOT >> /home/magma/magma-galaxy/check_pod_status.sh
 #!/bin/bash
 
 # Verifica o status do pod Elasticsearch
-pod_status=$(kubectl get pod elasticsearch-master-0 --no-headers | awk '{print $2}')
+pod_status="$(kubectl get pod elasticsearch-master-0 --no-headers | awk '{print $2}')"
 
 # Verifica se o pod está pronto
 if [[ "$pod_status" != "1/1" ]]; then
