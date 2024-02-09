@@ -34,3 +34,5 @@ EOT
 sudo systemctl daemon-reload
 sudo systemctl enable check_elasticsearch.service
 sudo systemctl start check_elasticsearch.service
+
+exit 0

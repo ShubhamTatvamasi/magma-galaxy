@@ -117,6 +117,7 @@ case $choice in
         ;;
     2)
         apt-mark unhold gcc-10-base liblsan0
+        apt update
         apt --fix-broken install -y
         installSmokePing
         downgradePkts
