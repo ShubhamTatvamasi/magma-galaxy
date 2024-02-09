@@ -1,0 +1,11 @@
+[Unit]
+Description=Verificar status do pod Elasticsearch e executar playbook Ansible
+After=network.target
+
+[Service]
+User=magma
+Type=simple
+ExecStart=/home/magma/magma-galaxy/check_pod_status.sh
+
+[Install]
+WantedBy=multi-user.target
