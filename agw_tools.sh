@@ -136,7 +136,7 @@ case $choice in
         exit 0
         ;;
     3)
-        systemctl stop magma@8
+        systemctl stop magma@*
         downgradePkts
         systemctl start magma@magmad
         exit 0
