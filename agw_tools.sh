@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -ex
 
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+
 systemctl stop magma@*
 
 downgradePkts() {
@@ -102,10 +112,11 @@ installSmokePing() {
 }
 
 # Menu
-echo "Escolha uma opção:"
-echo "1. Configurar Magma"
-echo "2. Instalar SmokePing"
-read -p "Digite o número da opção desejada: " choice
+echo -e "${GREEN}Escolha uma opção:${NC}"
+echo -e ${GREEN}"1. Configurar Magma ${NC}"
+echo -e "${GREEN}2. Instalar SmokePing ${NC}"
+echo -e "${GREEN}3. Fazer o Downgrade das bibliotecas GCC-10 e LIBLSAN2 ${NC}"
+read -p "${CYAN}Digite o número da opção desejada: ${NC}" choice
 
 case $choice in
     1)
@@ -120,6 +131,12 @@ case $choice in
         apt update
         apt --fix-broken install -y
         installSmokePing
+        downgradePkts
+        systemctl start magma@magmad
+        exit 0
+        ;;
+    3)
+        systemctl stop magma@8
         downgradePkts
         systemctl start magma@magmad
         exit 0
