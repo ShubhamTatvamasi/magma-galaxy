@@ -116,7 +116,7 @@ echo -e "${GREEN}Escolha uma opção:${NC}"
 echo -e "${GREEN}1. Configurar Magma ${NC}"
 echo -e "${GREEN}2. Instalar SmokePing ${NC}"
 echo -e "${GREEN}3. Fazer o Downgrade das bibliotecas GCC-10 e LIBLSAN2 ${NC}"
-read -p "${ORANGE}Digite o número da opção desejada: ${NC}" choice
+read -p "$(echo -e ${RED}Digite o número da opção desejada: ${NC})" choice
 
 case $choice in
     1)
