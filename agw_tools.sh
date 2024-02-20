@@ -10,8 +10,12 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-
+echo -e "${PURPLE}Parando os serviços do magma...${NC}"
 systemctl stop magma@*
+echo -e "${GREEN}Serviços parados com sucesso${NC}"
+sleep 3
+clear
+
 
 downgradePkts() {
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
