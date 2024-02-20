@@ -30,7 +30,7 @@ configureMagma() {
     IP_ETH0=$(ip a s eth0 | awk '/inet/ {print $2}' | head -n 1)
     CONFIG_DIR=/etc/magma
 
-    apt install docker.io docker-compose -y
+    apt install docker.io docker-compose gdb -y
     # Cria diretórios e arquivos necessários.
 
     sudo mkdir -p $MAGMA_DIR/configs
@@ -115,7 +115,7 @@ installSmokePing() {
 echo -e "${GREEN}Escolha uma opção:${NC}"
 echo -e "${GREEN}1. Configurar Magma ${NC}"
 echo -e "${GREEN}2. Instalar SmokePing ${NC}"
-echo -e "${GREEN}3. Fazer o Downgrade das bibliotecas GCC-10 e LIBLSAN2 ${NC}"
+echo -e "${GREEN}3. Fazer o Downgrade das bibliotecas GCC-10 e LIBLSAN0 ${NC}"
 read -p "$(echo -e ${CYAN}Digite o número da opção desejada: ${NC})" choice
 
 case $choice in
