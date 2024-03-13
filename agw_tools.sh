@@ -20,7 +20,8 @@ clear
 downgradePkts() {
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb -O /tmp/gcc10.deb
-    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb
+    wget https://launchpad.net/~ubuntu-security-proposed/+archive/ubuntu/ppa/+build/26763446/+files/openssl_1.1.1f-1ubuntu2.20_amd64.deb -O /tmp/openssl.deb
+    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb /tmp/openssl.deb
     apt-mark hold gcc-10-base liblsan0
 }
 
