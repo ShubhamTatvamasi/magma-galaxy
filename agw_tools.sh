@@ -118,9 +118,9 @@ installSmokePing() {
 
 # Menu
 echo -e "${GREEN}Escolha uma opção:${NC}"
-echo -e "${GREEN}1. Configurar Magma ${NC}"
-echo -e "${GREEN}2. Instalar SmokePing ${NC}"
-echo -e "${GREEN}3. Fazer o Downgrade das bibliotecas GCC-10 e LIBLSAN0 ${NC}"
+echo -e "${GREEN}1. Configurar Magma (para novas instalações) ${NC}"
+echo -e "${GREEN}2. Instalar SmokePing (para instalações onde o AGW já está configurado) ${NC}"
+echo -e "${GREEN}3. Downgrade dos pacotes (bugs relacionados a pacotes quebrados) ${NC}"
 read -p "$(echo -e ${CYAN}Digite o número da opção desejada: ${NC})" choice
 
 case $choice in
@@ -132,7 +132,7 @@ case $choice in
         exit 0
         ;;
     2)
-        apt-mark unhold gcc-10-base liblsan0
+        apt-mark unhold gcc-10-base liblsan0 openssl
         apt update
         apt --fix-broken install -y
         installSmokePing
