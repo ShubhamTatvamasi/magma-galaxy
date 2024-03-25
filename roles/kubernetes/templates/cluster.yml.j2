@@ -131,7 +131,7 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.10.1
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:1.8.6
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.22.28
-  kubernetes: rancher/hyperkube:v1.27.10-rancher1
+  kubernetes: rancher/hyperkube:v1.27.11-rancher1
   flannel: rancher/mirrored-flannel-flannel:v0.21.4
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher8
   calico_node: rancher/mirrored-calico-node:v3.26.3
@@ -152,12 +152,12 @@ system_images:
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v20231011-8b53cabe0
   metrics_server: rancher/mirrored-metrics-server:v0.6.3
   windows_pod_infra_container: rancher/mirrored-pause:3.7
-  aci_cni_deploy_container: noiro/cnideploy:6.0.3.2.81c2369
-  aci_host_container: noiro/aci-containers-host:6.0.3.2.81c2369
-  aci_opflex_container: noiro/opflex:6.0.3.2.81c2369
-  aci_mcast_container: noiro/opflex:6.0.3.2.81c2369
-  aci_ovs_container: noiro/openvswitch:6.0.3.2.81c2369
-  aci_controller_container: noiro/aci-containers-controller:6.0.3.2.81c2369
+  aci_cni_deploy_container: noiro/cnideploy:6.0.4.1.81c2369
+  aci_host_container: noiro/aci-containers-host:6.0.4.1.81c2369
+  aci_opflex_container: noiro/opflex:6.0.4.1.81c2369
+  aci_mcast_container: noiro/opflex:6.0.4.1.81c2369
+  aci_ovs_container: noiro/openvswitch:6.0.4.1.81c2369
+  aci_controller_container: noiro/aci-containers-controller:6.0.4.1.81c2369
   aci_gbp_server_container: ""
   aci_opflex_server_container: ""
 ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
