@@ -1,6 +1,6 @@
 ---
-rke_version: "v1.5.6"
+rke_version: "v1.5.7"
 helm_version: "v3.14.2"
-kubectl_version: "v1.27.11"
+kubectl_version: "v1.28.7"
 magma_directory: "magma-galaxy"
 orc8r_helm_repo: "https://linuxfoundation.jfrog.io/artifactory/magma-helm-prod"
