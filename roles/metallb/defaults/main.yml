@@ -1,4 +1,4 @@
 ---
 deploy_on_aws: false
 deploy_on_kind: false
-metallb_chart_version: "0.14.3"
+metallb_chart_version: "0.14.4"
