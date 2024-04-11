@@ -65,7 +65,7 @@ EOT
     echo -e "\n\n############\t\tArquivos criados"
     cat $MAGMA_DIR/configs/control_proxy.yml
     cat /etc/hosts
-    mv ~/rootCA.pem $MAGMA_DIR/certs
+    mv ~/rootCA.pem $MAGMA_DIR/certs/
 
     # Define the files in the /etc/magma folder
 
