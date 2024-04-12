@@ -20,9 +20,8 @@ clear
 downgradePkts() {
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb -O /tmp/gcc10.deb
-    wget https://launchpad.net/~ubuntu-security-proposed/+archive/ubuntu/ppa/+build/26763446/+files/openssl_1.1.1f-1ubuntu2.20_amd64.deb -O /tmp/openssl.deb
-    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb /tmp/openssl.deb
-    apt-mark hold gcc-10-base liblsan0 openssl
+    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb
+    apt-mark hold gcc-10-base liblsan0
 }
 
 
@@ -77,14 +76,14 @@ EOT
     # Perform additional corrections in the installation
 
     
-    cat <<EOT >> requirements.txt
-jsonschema==3.1.0
-Jinja2==3.0.3
-prometheus_client==0.3.1
-setuptools==49.6.0
-EOT
-
-    pip3 install -r requirements.txt
+#    cat <<EOT >> requirements.txt
+#jsonschema==3.1.0
+#Jinja2==3.0.3
+#prometheus_client==0.3.1
+#setuptools==49.6.0
+#EOT
+#
+#    pip3 install -r requirements.txt
 
     sudo sed -i 's/^\(.*\)APT::Periodic::Update-Package-Lists\(.*\)$/#\1APT::Periodic::Update-Package-Lists\2/' /etc/apt/apt.conf.d/20auto-upgrades
     sudo systemctl restart unattended-upgrades
@@ -132,7 +131,7 @@ case $choice in
         exit 0
         ;;
     2)
-        apt-mark unhold gcc-10-base liblsan0 openssl
+        apt-mark unhold gcc-10-base liblsan0
         apt update
         apt --fix-broken install -y
         installSmokePing
