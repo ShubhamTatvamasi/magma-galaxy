@@ -125,7 +125,7 @@ read -p "$(echo -e ${CYAN}Digite o número da opção desejada: ${NC})" choice
 case $choice in
     1)
         configureMagma
-        installSmokePing   
+        #installSmokePing   
         downgradePkts
         systemctl start magma@magmad
         exit 0
@@ -134,7 +134,7 @@ case $choice in
         apt-mark unhold gcc-10-base liblsan0
         apt update
         apt --fix-broken install -y
-        installSmokePing
+        #installSmokePing
         downgradePkts
         systemctl start magma@magmad
         exit 0
