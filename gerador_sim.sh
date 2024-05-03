@@ -43,11 +43,11 @@ for ((i=1; i<=num_linhas; i++)); do
     OPC=$(openssl rand -hex 16)
 
     # Adiciona a linha ao arquivo template.txt
-    echo "$PIN $PUK $PIN $PUK $ADM $ICCID $IMSI $ACC $MSISDN $KI $OPC" >> template.txt
+    echo "$PIN $PUK $PIN $PUK $ADM $ICCID $IMSI $ACC $MSISDN $KI $OPC" >> template_"$apn".txt
 done
 
 
-awk 'NR>6 {print "IMSI"$7",IMSI"$7","$10","$11",ACTIVE,None,dataplan100M,APN,policy100M"}' template.txt > subscribers.csv
+awk 'NR>6 {print "IMSI"$7",IMSI"$7","$10","$11",ACTIVE,None,dataplan100M,APN,policy100M"}' template_"$apn".txt > subscribers_"$apn".csv
 sed -i "s/APN/$apn/g" subscribers.csv
 
 
