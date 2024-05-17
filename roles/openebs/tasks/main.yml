@@ -10,3 +10,12 @@
       localpv-provisioner:
         hostpathClass:
           isDefaultClass: true
+      engines:
+        local:
+          lvm:
+            enabled: false
+          zfs:
+            enabled: false
+        replicated:
+          mayastor:
+            enabled: false
