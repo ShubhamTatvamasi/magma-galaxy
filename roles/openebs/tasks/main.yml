@@ -7,6 +7,6 @@
     chart_version: "{{ openebs_chart_version }}"
     create_namespace: true
     values:
-      localprovisioner:
+      localpv-provisioner:
         hostpathClass:
           isDefaultClass: true
