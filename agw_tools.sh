@@ -74,17 +74,6 @@ EOT
     echo "sgi_management_iface_ip_addr: '$IP_ETH0'" >> $CONFIG_DIR/pipelined.yml
 
     # Perform additional corrections in the installation
-
-    
-#    cat <<EOT >> requirements.txt
-#jsonschema==3.1.0
-#Jinja2==3.0.3
-#prometheus_client==0.3.1
-#setuptools==49.6.0
-#EOT
-#
-#    pip3 install -r requirements.txt
-
     sudo sed -i 's/^\(.*\)APT::Periodic::Update-Package-Lists\(.*\)$/#\1APT::Periodic::Update-Package-Lists\2/' /etc/apt/apt.conf.d/20auto-upgrades
     sudo systemctl restart unattended-upgrades
 
@@ -111,7 +100,10 @@ installSmokePing() {
     for ((i = 0; i < ${#files_to_download[@]}; i++)); do
         curl -sL "${files_to_download[i]}" >> "${destination_paths[i]}"
     done
-
+    systemctl stop docker
+    sed "/containerd.sock /a --iptables=false" -i /lib/systemd/system/docker.service
+    systemctl daemon-reload
+    systemctl start docker
     cd /root/smokeping && docker-compose up -d
 }
 
@@ -125,7 +117,7 @@ read -p "$(echo -e ${CYAN}Digite o número da opção desejada: ${NC})" choice
 case $choice in
     1)
         configureMagma
-        #installSmokePing   
+        installSmokePing   
         downgradePkts
         systemctl start magma@magmad
         exit 0
@@ -134,7 +126,8 @@ case $choice in
         apt-mark unhold gcc-10-base liblsan0
         apt update
         apt --fix-broken install -y
-        #installSmokePing
+	rm -rf /root/smokeping
+        installSmokePing
         downgradePkts
         systemctl start magma@magmad
         exit 0
