@@ -17,7 +17,7 @@ sleep 3
 clear
 
 
-downgradePkts() {
+downgradePkts_() {
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
     wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb -O /tmp/gcc10.deb
     sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb
@@ -118,7 +118,6 @@ case $choice in
     1)
         configureMagma
         installSmokePing   
-        downgradePkts
         systemctl start magma@magmad
         exit 0
         ;;
@@ -128,13 +127,12 @@ case $choice in
         apt --fix-broken install -y
 	rm -rf /root/smokeping
         installSmokePing
-        downgradePkts
         systemctl start magma@magmad
         exit 0
         ;;
     3)
         systemctl stop magma@*
-        downgradePkts
+        downgradePkts_
         systemctl start magma@magmad
         exit 0
         ;;
