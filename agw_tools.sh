@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
@@ -34,7 +33,6 @@ configureMagma() {
     IP_ETH0=$(ip a s eth0 | awk '/inet/ {print $2}' | head -n 1)
     CONFIG_DIR=/etc/magma
 
-    apt install docker.io docker-compose gdb -y
     # Cria diretórios e arquivos necessários.
 
     sudo mkdir -p $MAGMA_DIR/configs
@@ -81,7 +79,7 @@ EOT
 }
 
 installSmokePing() {
-    apt install docker.io docker-compose -y
+    apt install docker.io docker-compose speedtest-cli -y
     DIR=/root/smokeping/
     sudo mkdir -p $DIR
     sudo mkdir -p $DIR/config
@@ -102,7 +100,7 @@ installSmokePing() {
     done
     systemctl stop docker
     sed "/containerd.sock /a --iptables=false" -i /lib/systemd/system/docker.service
-    systemctl daemon-reload
+    sudo systemctl daemon-reload
     systemctl start docker
     cd /root/smokeping && docker-compose up -d
 }
