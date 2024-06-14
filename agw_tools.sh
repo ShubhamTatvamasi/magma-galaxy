@@ -99,7 +99,7 @@ installSmokePing() {
         curl -sL "${files_to_download[i]}" >> "${destination_paths[i]}"
     done
     systemctl stop docker
-    sed "/containerd.sock /a --iptables=false" -i /lib/systemd/system/docker.service
+    sed "s/containerd.sock/containerd.sock --iptables=false/" -i /lib/systemd/system/docker.service
     sudo systemctl daemon-reload
     systemctl start docker
     cd /root/smokeping && docker-compose up -d
