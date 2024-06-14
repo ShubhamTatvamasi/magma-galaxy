@@ -15,15 +15,6 @@ echo -e "${GREEN}Serviços parados com sucesso${NC}"
 sleep 3
 clear
 
-
-downgradePkts_() {
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/liblsan0_10.2.1-6_amd64.deb -O /tmp/liblsan0.deb
-    wget https://ftp.debian.org/debian/pool/main/g/gcc-10/gcc-10-base_10.2.1-6_amd64.deb -O /tmp/gcc10.deb
-    sudo dpkg -i /tmp/gcc10.deb /tmp/liblsan0.deb
-    apt-mark hold gcc-10-base liblsan0
-}
-
-
 configureMagma() {
 
     MAGMA_DIR=/var/opt/magma
@@ -36,6 +27,7 @@ configureMagma() {
     # Cria diretórios e arquivos necessários.
 
     sudo mkdir -p $MAGMA_DIR/configs
+    sudo mkdir -p $MAGMA_DIR/certs
 
     # Cria os arquivos necessários
     
@@ -48,7 +40,7 @@ $ORC8R_IP controller.$DOMAIN
 $ORC8R_IP bootstrapper-controller.$DOMAIN
 EOT
 
-    sudo cat <<EOT >> $MAGMA_DIR/configs/control_proxy.yml
+    sudo cat <<EOT > $MAGMA_DIR/configs/control_proxy.yml
 cloud_address: controller.$DOMAIN
 cloud_port: $ORC8R_SERVICE_PORT
 bootstrap_address: bootstrapper-controller.$DOMAIN
@@ -74,6 +66,8 @@ EOT
     # Perform additional corrections in the installation
     sudo sed -i 's/^\(.*\)APT::Periodic::Update-Package-Lists\(.*\)$/#\1APT::Periodic::Update-Package-Lists\2/' /etc/apt/apt.conf.d/20auto-upgrades
     sudo systemctl restart unattended-upgrades
+    echo "void __lsan_init(void){}" > /tmp/liblsan.c &&  gcc -shared -fPIC -o /tmp/liblsan.so.0 /tmp/liblsan.c
+    cp /tmp/liblsan.so.0 /usr/lib/x86_64-linux-gnu/liblsan.so.0
 
     
 }
@@ -83,7 +77,6 @@ installSmokePing() {
     DIR=/root/smokeping/
     sudo mkdir -p $DIR
     sudo mkdir -p $DIR/config
-    sudo mkdir -p $DIR/certs
     files_to_download=(
     "https://raw.githubusercontent.com/venko-networks/magma-galaxy/1.8.2/docker-compose.yml"
     "https://raw.githubusercontent.com/venko-networks/magma-galaxy/1.8.2/Targets"
@@ -110,7 +103,6 @@ installSmokePing() {
 echo -e "${GREEN}Escolha uma opção:${NC}"
 echo -e "${GREEN}1. Configurar Magma (para novas instalações) ${NC}"
 echo -e "${GREEN}2. Instalar SmokePing (para instalações onde o AGW já está configurado) ${NC}"
-echo -e "${GREEN}3. Downgrade dos pacotes (bugs relacionados a pacotes quebrados) ${NC}"
 read -p "$(echo -e ${CYAN}Digite o número da opção desejada: ${NC})" choice
 
 case $choice in
@@ -126,12 +118,6 @@ case $choice in
         apt --fix-broken install -y
 	rm -rf /root/smokeping
         installSmokePing
-        systemctl start magma@magmad
-        exit 0
-        ;;
-    3)
-        systemctl stop magma@*
-        downgradePkts_
         systemctl start magma@magmad
         exit 0
         ;;
