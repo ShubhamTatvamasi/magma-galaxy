@@ -83,6 +83,7 @@ installSmokePing() {
     DIR=/root/smokeping/
     sudo mkdir -p $DIR
     sudo mkdir -p $DIR/config
+    sudo mkdir -p $DIR/certs
     files_to_download=(
     "https://raw.githubusercontent.com/venko-networks/magma-galaxy/1.8.2/docker-compose.yml"
     "https://raw.githubusercontent.com/venko-networks/magma-galaxy/1.8.2/Targets"
