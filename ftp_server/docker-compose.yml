@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  ftp:
+    image: delfer/alpine-ftp-server
+    network_mode: host
+    environment:
+      - USERS=venko|v3nk0|/home/ftp|10001
+    volumes:
+      - ./log:/home/ftp
+

@@ -1,0 +1,7 @@
+[Unit]
+Description=Delete Old Log Files
+
+[Service]
+Type=simple
+ExecStart=/home/magma/ftp-server/log_delete.sh
+

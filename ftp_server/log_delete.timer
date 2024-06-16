@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Delete Old Log Files Every Minute
+
+[Timer]
+OnUnitActiveSec=30min
+Unit=log_delete.service
+
+[Install]
+WantedBy=timers.target
+
