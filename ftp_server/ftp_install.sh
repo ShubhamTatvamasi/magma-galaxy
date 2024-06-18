@@ -21,7 +21,7 @@ download_files() {
 	DIR=/home/magma
 	destination_paths=(
 		"$DIR/ftp_server/docker-compose.yml"
-		"$DIR/ftp_server/lod_delete.sh"
+		"$DIR/ftp_server/log_delete.sh"
 		"/etc/systemd/system/ftp_server.service"
 		"/etc/systemd/system/log_delete.service"
 		"/etc/systemd/system/log_delete.timer"
