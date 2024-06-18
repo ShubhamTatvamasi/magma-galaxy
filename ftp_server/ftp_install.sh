@@ -41,7 +41,6 @@ download_files() {
 echo -e "${GREEN}Baixando arquivos:${NC}"
 download_files
 
-sudo systemctl start ftp_server
 sudo systemctl start log_delete
 
 exit 0
