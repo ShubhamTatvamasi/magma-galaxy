@@ -4,7 +4,7 @@ services:
     image: delfer/alpine-ftp-server
     network_mode: host
     environment:
-      - USERS=magma|magma|/home/two|10001
+      - USERS=magma|magma|/home/ftp|10001
     volumes:
       - ./log:/home/ftp
 
