@@ -29,7 +29,7 @@
         replicas: 1
         image:
           repository: "{{ magma_docker_registry }}/nginx"
-          tag: "1.21"
+          tag: "{{ magma_docker_tag }}"
         spec:
           hostname: controller.{{ orc8r_domain }}
         service:
