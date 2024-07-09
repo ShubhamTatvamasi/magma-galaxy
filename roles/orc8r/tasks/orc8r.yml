@@ -20,6 +20,7 @@
         nginx:
           image:
             pullPolicy: IfNotPresent
+            tag: "1.21"
           service:
             type: "{{ magma_service_type }}"
         secret:
@@ -28,7 +29,7 @@
         replicas: 1
         image:
           repository: "{{ magma_docker_registry }}/nginx"
-          tag: "{{ magma_docker_tag }}"
+          tag: "1.21"
         spec:
           hostname: controller.{{ orc8r_domain }}
         service:
