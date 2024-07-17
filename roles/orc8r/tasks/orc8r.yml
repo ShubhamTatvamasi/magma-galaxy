@@ -20,6 +20,7 @@
         nginx:
           image:
             pullPolicy: IfNotPresent
+            tag: "1.21"
           service:
             type: "{{ magma_service_type }}"
         secret:
