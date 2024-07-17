@@ -116,7 +116,7 @@ case $choice in
         apt-mark unhold gcc-10-base liblsan0
         apt update
         apt --fix-broken install -y
-	rm -rf /root/smokeping
+	    rm -rf /root/smokeping
         installSmokePing
         systemctl start magma@magmad
         exit 0

@@ -13,3 +13,4 @@ services:
       - "80:80"
     volumes:
       - ./config:/config
+    network_mode: host
