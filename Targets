@@ -1,6 +1,6 @@
 *** Targets ***
 
-probe = FPing
+probe = FPingNormal
 
 menu = Top
 title = Network Latency Grapher
@@ -15,3 +15,11 @@ host = 10.0.2.100
 
 ++ Radio2
 host = 10.0.2.101
+
+++ UE1
+probe = FPingUE
+host = 192.168.128.12
+
+++ UE2
+probe = FPingUE
+host = 192.168.128.13
