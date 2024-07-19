@@ -25,11 +25,10 @@ check_gtpu(){
 }
 
 check_gtpbr(){
-    #verifica se captura pegou algo
+    #verifica se captura está zerada
     if [[ $packets_gtpbr == "0 packets captured" ]]; then
         FAIL_GTPBR=1
     else
-	echo $packets_gtpbr
         FAIL_GTPBR=0
     fi
 }
@@ -39,6 +38,11 @@ dump_config() {
     if [[ ! -f "$GET_CONFIGURATION_FILE" ]]; then
       touch "$GET_CONFIGURATION_FILE"
     fi
+
+    echo "Command: ping -c 10 10.0.2.100" >> "$GET_CONFIGURATION_FILE"
+    ping -c 10 10.0.2.100 >> "$GET_CONFIGURATION_FILE"
+    echo -e "\n" >> "$GET_CONFIGURATION_FILE"
+
 
     echo "Command: date" >> "$GET_CONFIGURATION_FILE"
     date >> "$GET_CONFIGURATION_FILE"
@@ -56,24 +60,20 @@ dump_config() {
     top -b -n 1 >> "$GET_CONFIGURATION_FILE"
     echo -e "\n" >> "$GET_CONFIGURATION_FILE"
 
-    echo "Command: pip3 freeze" >> "$GET_CONFIGURATION_FILE"
-    pip3 freeze >> "$GET_CONFIGURATION_FILE"
-    echo -e "\n" >> "$GET_CONFIGURATION_FILE"
-
-    echo "Command: apt list --installed" >> "$GET_CONFIGURATION_FILE"
-    apt list --installed >> "$GET_CONFIGURATION_FILE"
-    echo -e "\n" >> "$GET_CONFIGURATION_FILE"
-
     echo "Command: df -kh" >> "$GET_CONFIGURATION_FILE"
     df -kh >> "$GET_CONFIGURATION_FILE"
     echo -e "\n" >> "$GET_CONFIGURATION_FILE"
 
-    echo "Command: dpkg -l magma*" >> "$GET_CONFIGURATION_FILE"
-    dpkg -l magma* >> "$GET_CONFIGURATION_FILE"
+    echo "Command: journalctl -u magma@mme --since \"10 min ago" >> "$GET_CONFIGURATION_FILE"
+    journalctl -u magma@mme --since "10 min ago" >> "$GET_CONFIGURATION_FILE"
     echo -e "\n" >> "$GET_CONFIGURATION_FILE"
 
-    echo "Command: dpkg -l *openvswitch*" >> "$GET_CONFIGURATION_FILE"
-    dpkg -l *openvswitch* >> "$GET_CONFIGURATION_FILE"
+    echo "Command: journalctl -u magma@pipelined --since \"10 min ago" >> "$GET_CONFIGURATION_FILE"
+    journalctl -u magma@pipelined --since "10 min ago" >> "$GET_CONFIGURATION_FILE"
+    echo -e "\n" >> "$GET_CONFIGURATION_FILE"
+
+    echo "Command: netstat -i" >> "$GET_CONFIGURATION_FILE"
+    netstat -i >> "$GET_CONFIGURATION_FILE"
     echo -e "\n" >> "$GET_CONFIGURATION_FILE"
 
     echo "Command: ovs-vsctl show" >> "$GET_CONFIGURATION_FILE"
@@ -86,10 +86,6 @@ dump_config() {
 
     echo "Command: ovs-ofctl dump-flows gtp_br0" >> "$GET_CONFIGURATION_FILE"
     ovs-ofctl dump-flows gtp_br0 >> "$GET_CONFIGURATION_FILE"
-    echo -e "\n" >> "$GET_CONFIGURATION_FILE"
-
-    echo "Command: apt show magma" >> "$GET_CONFIGURATION_FILE"
-    apt show magma >> "$GET_CONFIGURATION_FILE"
     echo -e "\n" >> "$GET_CONFIGURATION_FILE"
 
     echo "Command: service magma@* status" >> "$GET_CONFIGURATION_FILE"
@@ -165,7 +161,7 @@ send_notification() {
     #TODO envia o dump para o discord
     #A principio apenas envia um alerta
 
-    PAYLOAD="payload_json={\"username\": \"Magma\", \"content\": \"ALERTA DE FALHA $1 EM $(date)\"}"
+    PAYLOAD="payload_json={\"username\": \"Magma\", \"content\": \"ALERTA DE FALHA $1 EM $(date) NO CLIENTE $2\"}"
     curl -F "$PAYLOAD" https://discord.com/api/webhooks/932746721358913607/x_STDYIfsEFUiTglwSkd1YJY9i5Jy5OOmq7WZx6fz79Mz0zBkaWtsg3XSPGeIf-dFu3G     
 }
 
@@ -174,16 +170,17 @@ while true; do
     check_gtpu
     check_gtpbr
     if [[ $FAIL_GTPU -eq 1 ]]; then
-	send_notification "GTPU"
+	send_notification "GTPU" $2
     fi
     if [[ $FAIL_GTPBR -eq 1 ]]; then
-	send_notification "GTPBR"
+	send_notification "GTPBR" $2
     fi
     if [[ $FAIL_GTPU -eq 1 || $FAIL_GTPBR -eq 1 ]]; then
     	dump_config
+        systemctl restart sctpd
 	exit 0
     fi
     sleep 10
-    echo "Rodando"
+    echo "Rodando em $(date)"
 done
 
