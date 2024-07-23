@@ -6,17 +6,13 @@
     update_cache: yes
     name: python3-pip
 
-- name: Install docker python package
+- name: Install docker, kubernetes and crypto python packages
   become: yes
-  pip:
-    name: docker
-
-- name: Install kubernetes and crypto python packages
-  pip:
+  apt:
     name:
-      - kubernetes
-      - cryptography
-      - pyopenssl
+      - python3-docker
+      - python3-kubernetes
+      - python3-cryptography
 
 - name: Install Helm Diff Plugin
   kubernetes.core.helm_plugin:
