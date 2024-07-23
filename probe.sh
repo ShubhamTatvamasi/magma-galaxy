@@ -178,7 +178,7 @@ while true; do
     if [[ $FAIL_GTPU -eq 1 || $FAIL_GTPBR -eq 1 ]]; then
     	dump_config
         systemctl restart sctpd
-	exit 0
+	#exit 0
     fi
     sleep 10
     echo "Rodando em $(date)"
