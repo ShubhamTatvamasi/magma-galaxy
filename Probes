@@ -14,3 +14,8 @@ sourceaddress = 10.0.2.1
 ++ FPingUE
 
 sourceaddress = 10.1.0.1
+
+++ FPingWAN
+
+timeout = 10
+

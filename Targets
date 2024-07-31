@@ -23,3 +23,11 @@ host = 192.168.128.12
 ++ UE2
 probe = FPingUE
 host = 192.168.128.13
+
+++ WAN1
+probe = FPingWAN
+host = 8.8.8.8
+
+++ WAN2
+probe = FPingWAN
+host = 200.160.7.186
