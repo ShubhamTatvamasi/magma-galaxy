@@ -119,10 +119,10 @@ addons: ""
 addons_include: []
 system_images:
   etcd: rancher/mirrored-coreos-etcd:v3.5.12
-  alpine: rancher/rke-tools:v0.1.100
-  nginx_proxy: rancher/rke-tools:v0.1.100
-  cert_downloader: rancher/rke-tools:v0.1.100
-  kubernetes_services_sidecar: rancher/rke-tools:v0.1.100
+  alpine: rancher/rke-tools:v0.1.102
+  nginx_proxy: rancher/rke-tools:v0.1.102
+  cert_downloader: rancher/rke-tools:v0.1.102
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.102
   kubedns: rancher/mirrored-k8s-dns-kube-dns:1.23.0
   dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.23.0
   kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.23.0
@@ -130,33 +130,33 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.11.1
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:v1.8.9
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.23.0
-  kubernetes: rancher/hyperkube:v1.30.2-rancher1
+  kubernetes: rancher/hyperkube:v1.30.4-rancher1
   flannel: rancher/mirrored-flannel-flannel:v0.25.1
   flannel_cni: rancher/flannel-cni:v1.4.1-rancher1
-  calico_node: rancher/mirrored-calico-node:v3.28.0
-  calico_cni: rancher/calico-cni:v3.28.0-rancher1
-  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.28.0
-  calico_ctl: rancher/mirrored-calico-ctl:v3.28.0
-  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.0
-  canal_node: rancher/mirrored-calico-node:v3.28.0
-  canal_cni: rancher/calico-cni:v3.28.0-rancher1
-  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.28.0
+  calico_node: rancher/mirrored-calico-node:v3.28.1
+  calico_cni: rancher/calico-cni:v3.28.1-rancher1
+  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.28.1
+  calico_ctl: rancher/mirrored-calico-ctl:v3.28.1
+  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.1
+  canal_node: rancher/mirrored-calico-node:v3.28.1
+  canal_cni: rancher/calico-cni:v3.28.1-rancher1
+  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.28.1
   canal_flannel: rancher/mirrored-flannel-flannel:v0.25.1
-  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.0
+  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.1
   weave_node: ""
   weave_cni: ""
   pod_infra_container: rancher/mirrored-pause:3.7
-  ingress: rancher/nginx-ingress-controller:nginx-1.10.1-rancher1
+  ingress: rancher/nginx-ingress-controller:nginx-1.11.2-rancher1
   ingress_backend: rancher/mirrored-nginx-ingress-controller-defaultbackend:1.5-rancher1
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.4.1
   metrics_server: rancher/mirrored-metrics-server:v0.7.1
   windows_pod_infra_container: rancher/mirrored-pause:3.7
-  aci_cni_deploy_container: noiro/cnideploy:6.0.4.2.81c2369
-  aci_host_container: noiro/aci-containers-host:6.0.4.2.81c2369
-  aci_opflex_container: noiro/opflex:6.0.4.2.81c2369
-  aci_mcast_container: noiro/opflex:6.0.4.2.81c2369
-  aci_ovs_container: noiro/openvswitch:6.0.4.2.81c2369
-  aci_controller_container: noiro/aci-containers-controller:6.0.4.2.81c2369
+  aci_cni_deploy_container: noiro/cnideploy:6.0.4.3.81c2369
+  aci_host_container: noiro/aci-containers-host:6.0.4.3.81c2369
+  aci_opflex_container: noiro/opflex:6.0.4.3.81c2369
+  aci_mcast_container: noiro/opflex:6.0.4.3.81c2369
+  aci_ovs_container: noiro/openvswitch:6.0.4.3.81c2369
+  aci_controller_container: noiro/aci-containers-controller:6.0.4.3.81c2369
   aci_gbp_server_container: ""
   aci_opflex_server_container: ""
 ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
@@ -215,3 +215,5 @@ restore:
   snapshot_name: ""
 rotate_encryption_key: false
 dns: null
+cri_dockerd_stream_server_address: ""
+cri_dockerd_stream_server_port: ""
