@@ -1,18 +1,42 @@
 ---
-- name: Install pip package
-  when: ansible_distribution != "MacOSX"
+- name: Install pip package (Debian-based)
+  when: ansible_os_family == "Debian"
   become: yes
   apt:
     update_cache: yes
     name: python3-pip
 
-- name: Install docker, kubernetes and crypto python packages
+- name: Install pip package (RHEL-based)
+  when: ansible_os_family == "RedHat"
+  become: yes
+  dnf:
+    name:
+      - python3-pip
+      - git
+
+- name: Install docker, kubernetes, and crypto python packages (Debian-based)
+  when: ansible_os_family == "Debian"
   become: yes
   apt:
     name:
       - python3-docker
       - python3-kubernetes
       - python3-cryptography
+
+- name: Install docker python packages (RHEL-based)
+  when: ansible_os_family == "RedHat"
+  become: yes
+  pip:
+    name:
+      - docker
+
+- name: Install kubernetes, crypto and pyopenssl python packages (RHEL-based)
+  when: ansible_os_family == "RedHat"
+  pip:
+    name:
+      - kubernetes
+      - cryptography
+      - pyopenssl
 
 - name: Install Helm Diff Plugin
   kubernetes.core.helm_plugin:

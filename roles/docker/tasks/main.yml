@@ -11,6 +11,19 @@
     groups: docker
     append: yes
 
+- name: Enable service docker
+  when: ansible_os_family == "RedHat"
+  become: yes
+  service:
+    name: docker
+    enabled: yes
+
+- name: Start service docker
+  when: ansible_os_family == "RedHat"
+  service:
+    name: docker
+    state: started
+
 - name: Pull alpine docker image
   become: yes
   community.docker.docker_image:
