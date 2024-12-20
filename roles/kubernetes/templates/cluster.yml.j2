@@ -130,19 +130,19 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.11.3
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:v1.8.9
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.23.0
-  kubernetes: rancher/hyperkube:v1.31.2-rancher2
+  kubernetes: rancher/hyperkube:v1.31.3-rancher1
   flannel: rancher/mirrored-flannel-flannel:v0.25.1
   flannel_cni: rancher/flannel-cni:v1.4.1-rancher1
-  calico_node: rancher/mirrored-calico-node:v3.28.1
-  calico_cni: rancher/calico-cni:v3.28.1-rancher1
-  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.28.1
-  calico_ctl: rancher/mirrored-calico-ctl:v3.28.0
-  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.1
-  canal_node: rancher/mirrored-calico-node:v3.28.1
-  canal_cni: rancher/calico-cni:v3.28.1-rancher1
-  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.28.1
+  calico_node: rancher/mirrored-calico-node:v3.29.0
+  calico_cni: rancher/calico-cni:v3.29.0-rancher1
+  calico_controllers: rancher/mirrored-calico-kube-controllers:v3.29.0
+  calico_ctl: rancher/mirrored-calico-ctl:v3.29.0
+  calico_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.29.0
+  canal_node: rancher/mirrored-calico-node:v3.29.0
+  canal_cni: rancher/calico-cni:v3.29.0-rancher1
+  canal_controllers: rancher/mirrored-calico-kube-controllers:v3.29.0
   canal_flannel: rancher/mirrored-flannel-flannel:v0.25.1
-  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.28.1
+  canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.29.0
   weave_node: ""
   weave_cni: ""
   pod_infra_container: rancher/mirrored-pause:3.7
@@ -151,12 +151,12 @@ system_images:
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.4.1
   metrics_server: rancher/mirrored-metrics-server:v0.7.1
   windows_pod_infra_container: rancher/mirrored-pause:3.7
-  aci_cni_deploy_container: noiro/cnideploy:6.1.1.1.81c2369
-  aci_host_container: noiro/aci-containers-host:6.1.1.1.81c2369
-  aci_opflex_container: noiro/opflex:6.1.1.1.81c2369
-  aci_mcast_container: noiro/opflex:6.1.1.1.81c2369
-  aci_ovs_container: noiro/openvswitch:6.1.1.1.81c2369
-  aci_controller_container: noiro/aci-containers-controller:6.1.1.1.81c2369
+  aci_cni_deploy_container: noiro/cnideploy:6.0.4.4.81c2369
+  aci_host_container: noiro/aci-containers-host:6.0.4.4.81c2369
+  aci_opflex_container: noiro/opflex:6.0.4.4.81c2369
+  aci_mcast_container: noiro/opflex:6.0.4.4.81c2369
+  aci_ovs_container: noiro/openvswitch:6.0.4.4.81c2369
+  aci_controller_container: noiro/aci-containers-controller:6.0.4.4.81c2369
   aci_gbp_server_container: ""
   aci_opflex_server_container: ""
 ssh_key_path: {{ ansible_env.HOME }}/{{ magma_directory }}/.ssh/id_rsa
