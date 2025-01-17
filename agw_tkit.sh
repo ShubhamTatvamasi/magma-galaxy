@@ -4,7 +4,7 @@ SESH=0
 WNAME="Magma Toolkit"
 CMDPANE1="health_cli.py"
 CMDPANE2="mobility_cli.py get_subscriber_table"
-CMDPANE3="ping google.com"
+CMDPANE3="ping -c 10 google.com"
 
 tmux has-session -t $SESH 2>/dev/null
 
