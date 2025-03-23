@@ -111,6 +111,7 @@ network:
   node_selector: {}
   update_strategy: null
   tolerations: []
+  enable_br_netfilter: null
 authentication:
   strategy: x509
   sans: []
@@ -118,11 +119,11 @@ authentication:
 addons: ""
 addons_include: []
 system_images:
-  etcd: rancher/mirrored-coreos-etcd:v3.5.15
-  alpine: rancher/rke-tools:v0.1.109
-  nginx_proxy: rancher/rke-tools:v0.1.109
-  cert_downloader: rancher/rke-tools:v0.1.109
-  kubernetes_services_sidecar: rancher/rke-tools:v0.1.109
+  etcd: rancher/mirrored-coreos-etcd:v3.5.16
+  alpine: rancher/rke-tools:v0.1.111
+  nginx_proxy: rancher/rke-tools:v0.1.111
+  cert_downloader: rancher/rke-tools:v0.1.111
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.111
   kubedns: rancher/mirrored-k8s-dns-kube-dns:1.23.0
   dnsmasq: rancher/mirrored-k8s-dns-dnsmasq-nanny:1.23.0
   kubedns_sidecar: rancher/mirrored-k8s-dns-sidecar:1.23.0
@@ -130,8 +131,8 @@ system_images:
   coredns: rancher/mirrored-coredns-coredns:1.11.3
   coredns_autoscaler: rancher/mirrored-cluster-proportional-autoscaler:v1.8.9
   nodelocal: rancher/mirrored-k8s-dns-node-cache:1.23.0
-  kubernetes: rancher/hyperkube:v1.31.5-rancher1
-  flannel: rancher/mirrored-flannel-flannel:v0.25.1
+  kubernetes: rancher/hyperkube:v1.32.2-rancher1
+  flannel: rancher/mirrored-flannel-flannel:v0.26.4
   flannel_cni: rancher/flannel-cni:v1.4.1-rancher1
   calico_node: rancher/mirrored-calico-node:v3.29.0
   calico_cni: rancher/calico-cni:v3.29.0-rancher1
@@ -141,7 +142,7 @@ system_images:
   canal_node: rancher/mirrored-calico-node:v3.29.0
   canal_cni: rancher/calico-cni:v3.29.0-rancher1
   canal_controllers: rancher/mirrored-calico-kube-controllers:v3.29.0
-  canal_flannel: rancher/mirrored-flannel-flannel:v0.25.1
+  canal_flannel: rancher/mirrored-flannel-flannel:v0.26.4
   canal_flexvol: rancher/mirrored-calico-pod2daemon-flexvol:v3.29.0
   weave_node: ""
   weave_cni: ""
@@ -149,7 +150,7 @@ system_images:
   ingress: rancher/nginx-ingress-controller:nginx-1.12.0-rancher1
   ingress_backend: rancher/mirrored-nginx-ingress-controller-defaultbackend:1.5-rancher2
   ingress_webhook: rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.4.1
-  metrics_server: rancher/mirrored-metrics-server:v0.7.1
+  metrics_server: rancher/mirrored-metrics-server:v0.7.2
   windows_pod_infra_container: rancher/mirrored-pause:3.7
   aci_cni_deploy_container: noiro/cnideploy:6.1.1.2.81c2369
   aci_host_container: noiro/aci-containers-host:6.1.1.2.81c2369
